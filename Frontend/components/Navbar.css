@@ -1,0 +1,7 @@
+.navbarscrolls{
+    display: flex;
+    justify-content: space-around;
+    position:relative;
+    top: -330px;
+}
+
