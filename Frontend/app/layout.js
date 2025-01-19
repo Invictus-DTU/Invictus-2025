@@ -1,5 +1,6 @@
 import "./globals.css";
 import Terrain from "@/components/Terrain";
+import Navbar from "@/components/Navbar";
 
 
 export const metadata = {
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
       <body
         className={`bg w-screen h-screen flex flex-col`}
       >
+        <Navbar/>
         {children}
         <Terrain />
       </body>

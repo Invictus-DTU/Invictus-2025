@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 
+@font-face {
+  font-family: 'gangOfThree';
+  src: url('../public/go3v2.ttf');
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -15,6 +20,11 @@
   }
 }
 
+
+*{
+  font-family: gangOfThree;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -23,3 +33,4 @@ body {
 .bg{
   background: url("/bg.png") no-repeat center center/cover;
 }
+
