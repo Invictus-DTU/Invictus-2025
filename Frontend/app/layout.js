@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`bg w-screen h-screen flex flex-col`}
+        className={`bg w-screen h-screen flex flex-col overflow-auto`}
       >
         <Navbar/>
         {children}
