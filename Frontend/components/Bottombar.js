@@ -32,7 +32,7 @@ function Bottombar({className}) {
                 </Link>
 
                 {index !== routes.length - 1 &&
-                <span className='poppins'>
+                <span className='font-jmh'>
                     |
                 </span>
                 }
@@ -41,12 +41,16 @@ function Bottombar({className}) {
         </div>
 
         <div className='flex items-center gap-4'>
-            <Link href={'/'}>
+            <Link href={'https://www.instagram.com/invictus_dtu/'} target='_blank'>
                 <Instagram size={24} />
             </Link>
 
-            <Link href={'/'}>
+            <Link href={'https://www.linkedin.com/company/invictus-dtu/'} target='_blank'>
                 <Linkedin size={24} />
+            </Link>
+
+            <Link href={'https://discord.gg/X48VW5NQ'} target='_blank'>
+                <img src='/discord.png' alt='discord' className='w-7' />
             </Link>
             
         </div>

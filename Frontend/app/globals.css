@@ -11,8 +11,8 @@
 }
 
 @font-face {
-  font-family: 'typo';
-  src: url('../public/ChineseShangaiDemoVersionRegular-p7Eyy.ttf');
+  font-family: 'jmh';
+  src: url('../public/JMH\ SS.ttf');
 }
 
 :root {
@@ -55,6 +55,6 @@ body {
   }
 }
 
-.poppins{
-  font-family: typo;
+.font-jmh{
+  font-family: jmh;
 }

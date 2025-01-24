@@ -21,9 +21,10 @@ function Navbar() {
   ]
 
   return (
-    <div className='justify-between gap-12 fixed w-full px-5 hidden md:flex'>
+    <div className='justify-between gap-12 fixed w-full px-5 hidden md:flex z-10'>
       {routes.map((route, index) => 
-      <Link key={index} href={`/comingsoon`} className='z-30'>
+      // <Link key={index} href={`/comingsoon`} className='z-30'>
+      <div>
         <button key={index} id={index} className={cn(
           'relative -top-[78%] left-0 scale-90 duration-500 hover:scale-175 hover:scale-x-200 hover:top-20 ',
           route.name === 'About Us' && 'hover:left-20',
@@ -31,7 +32,7 @@ function Navbar() {
           )}>
           <img src='/fullscroll1.svg' className='z-0 scale-90'/>
 
-          <p className='absolute top-[6.5rem] left-14 w-[6.35rem] right-0 z-10 text-black text-[9px] poppins font-semibold'>
+          <p className='absolute top-[7rem] left-14 w-[6.35rem] right-0 z-10 text-black text-[9px] font-jmh font-light'>
             {route.description}
           </p>
           
@@ -39,7 +40,8 @@ function Navbar() {
             {route.name}
           </p>
         </button>
-        </Link>
+        </div>
+        // </Link>
       )}
     </div>
   );
