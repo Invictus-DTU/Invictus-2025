@@ -16,7 +16,7 @@ function Terrain() {
         )} /> */}
       <img src="/bgcircle.svg" alt="" className={cn(
         "absolute -bottom-16 duration-1000 -z-10 sm:-right-3 w-4/5 sm:w-[55%] md:w-[45%] lg:w-[35%]",
-        path === "/" && "-bottom-8 right-[12%] sm:right-[17.5%] md:right-[26.7%] lg:right-[32.5%] w-3/4 sm:w-[65%] md:w-[45%] lg:w-[35%]",
+        path === "/" && "-bottom-8 right-[10%] sm:right-[17.5%] md:right-[26.7%] lg:right-[32.5%] w-[80%] sm:w-[8%] md:w-[45%] lg:w-[35%]",
       )} />
 
       <div className={'flex justify-center items-end gap-10 z-0'}>

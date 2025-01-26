@@ -58,3 +58,31 @@ body {
 .font-jmh{
   font-family: jmh;
 }
+
+.from-top{
+  animation: fromTop;
+  animation-duration: 1.5s;
+}
+
+@keyframes fromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.from-bottom{
+  animation: fromBottom;
+  animation-duration: 1.5s;
+}
+
+@keyframes fromBottom {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
