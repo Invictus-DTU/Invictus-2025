@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import { cn } from '@/lib/utils'
 
@@ -11,6 +10,7 @@ function page() {
       <p className='text-black z-10 text-[8vw] sm:text-[6vw] md:text-[4.9vw] lg:text-[3.5vw]'>
         Coming Soon
       </p>
+
     </div>
   )
 }
