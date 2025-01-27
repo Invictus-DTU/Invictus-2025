@@ -9,7 +9,7 @@ function Navbar() {
 
   return (
     <div>
-      <div className='justify-between gap-12 fixed w-full px-5 hidden md:flex z-10'>
+      <div className='justify-between gap-12 fixed w-full px-5 hidden md:flex z-20'>
         <div>
           <button className={cn(
             'relative -top-[78%] left-0 scale-90 duration-500 hover:scale-175 hover:scale-x-200 hover:top-20 hover:left-20')}>
