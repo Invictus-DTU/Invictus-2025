@@ -16,6 +16,10 @@ function Bottombar({className}) {
         {
             name: 'Workshops',
             link: '/comingsoon'
+        },
+        {
+            name: 'Our Team',
+            link: '/team'
         }
     ]
   return (
