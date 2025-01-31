@@ -1,10 +1,8 @@
-"use client";
 import { useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
   FaDiscord,
-  FaHamburger,
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa";
@@ -12,18 +10,18 @@ import { CgMenu, CgClose } from "react-icons/cg";
 
 function Navbar() {
   const [menu, setMenu] = useState(null);
-  const [loginPopUp, setLoginPopUp] = useState(false)
+  // const [loginPopUp, setLoginPopUp] = useState(false)
 
   return (
     <>
-      {
+      {/* {
         loginPopUp && (
           <div className="absolute w-full h-full z-20 bg-black loginModal">
             hello
           </div>
         )
-      }
-      <button className="absolute z-[10] left-[8%] top-[-47.1%] hover:top-[7%] duration-[0.5s] hover:duration-[0.5s] hover:scale-[1.3]">
+      } */}
+      <button className="absolute z-[10] left-[8%] top-[-330px] hover:top-[50px] duration-[0.5s] hover:duration-[0.5s] hover:scale-[1.3]">
         <img src="/fullscroll1.svg" />
 
         <p className="absolute top-[7rem] left-14 w-[6.35rem] right-0 z-10 text-black text-[9px] font-jmh">
@@ -38,12 +36,12 @@ function Navbar() {
           About Us
         </p>
       </button>
-      <button onClick={() => setLoginPopUp(true)} className="absolute z-[10] right-[8%] top-[-47.1%] hover:top-[-53.5%] duration-[0.5s] hover:duration-[0.5s] hover:scale-[1.3]">
+      {/* <button onClick={() => setLoginPopUp(true)} className="absolute z-[10] right-[8%] top-[-47.1%] hover:top-[-53.5%] duration-[0.5s] hover:duration-[0.5s] hover:scale-[1.3]">
         <img src="/fullscroll1.svg" />
         <p className="absolute z-[11] bottom-[20px] right-[50px] text-md">
           Login
         </p>
-      </button>
+      </button> */}
       {/* 
       <div>
           <button className={cn(
