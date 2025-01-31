@@ -25,20 +25,7 @@ function Navbar() {
           </button>
           
         </div>
-        <div>
-        <button className={cn(
-            'relative -top-[78%] right-0 scale-90 duration-500 hover:scale-175 hover:scale-x-200 hover:top-20 hover:right-20')}>
-            <img src='/fullscroll1.svg' className='z-0 scale-90'/>
-
-            <p className='absolute top-[7rem] left-14 w-[6.35rem] right-0 z-10 text-black text-[9px] font-jmh'>
-              CONTENT
-            </p>
-            
-            <p className='absolute bottom-[38px] left-10 right-0 z-10 text-black font-medium text-lg'>
-              Login
-            </p>
-          </button>
-        </div>
+        
 
         {/* <div>
           <button className={cn(
