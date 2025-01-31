@@ -1,0 +1,82 @@
+"use client";
+import EventCard from "@/components/EventCard";
+import React, { useRef, useState } from "react";
+import {
+  FaAngleDoubleRight,
+  FaAngleRight,
+  FaArrowDown,
+  FaArrowRight,
+  FaSearch,
+} from "react-icons/fa";
+
+function page() {
+  const scrollRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1.3;
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+  return (
+    <>
+      <div className="visible-delay flex flex-col items-center sm:items-start justify-start text-black px-4 sm:px-24 pt-5 sm:pt-20">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full">
+          <h1 className="text-6xl sm:text-5xl md:text-5xl lg:text-6xl">
+            Events
+          </h1>
+
+          <div className="flex flex-row w-[100%] md:w-auto items-center justify-center md:justify-between">
+            <button className="flex flex-row items-center justify-between bg-black px-3 py-2 text-white rounded-md text-lg cursor-pointer">
+              <span className="mr-2">Filter</span>
+              <FaArrowDown size={20} />
+            </button>
+            <div className="flex flex-row items-center justify-between ml-2 px-3 py-2 text-lg  rounded-md text-white bg-black">
+              <FaSearch size={24} className="mr-3" />
+              <input type="text" className="bg-transparent outline-none" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mt-4 flex flex-row items-center justify-start w-full">
+        <div
+          ref={scrollRef}
+          className="flex pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+        >
+          <div className="min-w-[100px] " />
+          <EventCard />
+          <EventCard />
+          <EventCard />
+          <EventCard />
+          <EventCard />
+          <EventCard />
+        </div>
+
+        {/* <button className="bg-[#2F1414] absolute z-1 cursor-pointer mx-4 p-4 rounded-full right-0 shadow-sm">
+          <FaAngleDoubleRight color="white" size={50} />
+          </button> */}
+      </div>
+    </>
+  );
+}
+
+export default page;

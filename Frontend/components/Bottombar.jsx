@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { Instagram, Linkedin } from 'lucide-react'
+import { FaInstagram, FaLinkedin, FaDiscord } from "react-icons/fa"
 
 function Bottombar({className}) {
     const routes = [
@@ -11,7 +11,7 @@ function Bottombar({className}) {
         },
         {
             name: 'Events',
-            link: '/comingsoon'
+            link: '/events'
         },
         {
             name: 'Workshops',
@@ -20,7 +20,7 @@ function Bottombar({className}) {
     ]
   return (
     <div className={cn(
-        'text-[#DE1B19] font-bold text-xl w-full z-50 items-center justify-between hidden md:flex',
+        'text-[#DE1B19] font-bold text-xl w-full items-center justify-between hidden md:flex',
         className
         )}>
         <div className='flex gap-4 items-center'>
@@ -42,15 +42,15 @@ function Bottombar({className}) {
 
         <div className='flex items-center gap-4'>
             <Link href={'https://www.instagram.com/invictus_dtu/'} target='_blank'>
-                <Instagram size={24} />
+                <FaInstagram size={24} />
             </Link>
 
             <Link href={'https://www.linkedin.com/company/invictus-dtu/'} target='_blank'>
-                <Linkedin size={24} />
+                <FaLinkedin size={24} />
             </Link>
 
             <Link href={'https://discord.gg/X48VW5NQ'} target='_blank'>
-                <img src='/discord.png' alt='discord' className='w-7' />
+                <FaDiscord size={24} />
             </Link>
             
         </div>
