@@ -48,7 +48,7 @@ function page() {
             </button>
             <div className="flex flex-row items-center justify-between ml-2 px-3 py-2 text-lg  rounded-md text-white bg-black">
               <FaSearch size={24} className="mr-3" />
-              <input type="text" className="bg-transparent outline-none" />
+              <input placeholder="Search for events..." type="text" className="bg-transparent outline-none font-jmh" />
             </div>
           </div>
         </div>

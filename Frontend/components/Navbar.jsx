@@ -21,7 +21,7 @@ function Navbar() {
           </div>
         )
       } */}
-      <button className="absolute z-[10] left-[8%] top-[-330px] hover:top-[50px] duration-[0.5s] hover:duration-[0.5s] hover:scale-[1.3]">
+      <button className="absolute z-[10] left-[8%] top-[-340px] hover:top-[50px] duration-[0.5s] hover:duration-[0.5s] hover:scale-[1.3]">
         <img src="/fullscroll1.svg" />
 
         <p className="absolute top-[7rem] left-14 w-[6.35rem] right-0 z-10 text-black text-[9px] font-jmh">

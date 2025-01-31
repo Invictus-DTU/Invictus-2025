@@ -97,7 +97,7 @@ function Terrain() {
             alt=""
             className={cn(
               "w-40 duration-1000 absolute bottom-[4.5rem] -right-48 sm:-right-16 md:right-0",
-              path === "/comingsoon" &&
+              path === "/events" &&
                 "w-3/4 sm:w-[49%] md:w-[40%] lg:w-[30%] bottom-[3.5rem] left-auto right-auto sm:right-[1rem]"
             )}
           />

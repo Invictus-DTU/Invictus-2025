@@ -9,6 +9,12 @@
   src: url("/go3v2.ttf");
 }
 
+
+@font-face {
+  font-family: "gagalin";
+  src: url("/gagalin.otf");
+}
+
 @font-face {
   font-family: "limerick";
   src: url("/limerick.otf");
@@ -74,6 +80,10 @@ body {
 
 .font-jmh {
   font-family: jmh;
+}
+
+.font-gagalin {
+  font-family: gagalin;
 }
 
 .from-top {
