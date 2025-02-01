@@ -42,7 +42,7 @@ function page() {
   };
 
   const fetchAllData = async () => {
-    const response = await fetch("https://invictus-2025-16ei.vercel.app/api/events", {
+    const response = await fetch("http://localhost:8000/api/events", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -125,22 +125,22 @@ function page() {
 
   return (
     <>
-      <div className="visible-delay flex flex-col items-center sm:items-start justify-start text-black px-4 sm:px-4 md:px-6 lg:px-16 -mt-5 md:mt-28 lg:mt-24 overflow-auto z-10">
+      <div className="visible-delay flex flex-col items-center sm:items-start justify-start text-black px-4 sm:px-4 md:px-6 lg:px-16 -mt-5 md:mt-28 lg:mt-24 overflow-auto z-[5]">
         <div className="flex flex-col md:flex-row items-center justify-between w-full">
           <h1
-            className="text-6xl sm:text-5xl md:text-5xl lg:text-6xl"
+            className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
           >
             Events
           </h1>
 
-          <div className="py-2 flex flex-row w-[100%] md:w-auto items-center justify-center md:justify-between">
-            <select className="mr-2 text-[12px] md:text-[15px] flex flex-row items-center justify-between bg-black px-3 py-3 text-white rounded-md cursor-pointer" onChange={(e) => setMode(e.target.value.toLowerCase())}>
+          <div className="py-2 flex flex-row w-[100%] md:w-auto items-center justify-center flex-wrap md:justify-between">
+            <select className="mr-2 text-[10px] md:text-[15px] flex flex-row items-center justify-between bg-black px-3 py-3 text-white rounded-md cursor-pointer" onChange={(e) => setMode(e.target.value.toLowerCase())}>
               <option>Mode</option>
               <option>Online</option>
               <option>Offline</option>
               <option>Hybrid</option>
             </select>
-            <select className="mr-2 text-[12px] md:text-[15px] flex flex-row items-center justify-between bg-black px-3 py-3 text-white rounded-md cursor-pointer" onChange={(e) => setCategory(e.target.value.toLowerCase())}>
+            <select className="mr-2 text-[10px] md:text-[15px] flex flex-row items-center justify-between bg-black px-3 py-3 text-white rounded-md cursor-pointer w-24 md:w-auto" onChange={(e) => setCategory(e.target.value.toLowerCase())}>
               <option className="mr-2">Category</option>
               <option className="mr-2">Field Event</option>
               <option className="mr-2">Quiz</option>
@@ -153,7 +153,7 @@ function page() {
               <option className="mr-2">Design</option>
 
             </select>
-            <select className="flex text-[12px] md:text-[15px] flex-row items-center justify-between bg-black px-3 py-3 text-white rounded-md cursor-pointer" onChange={(e) => setDate(e.target.value.toLowerCase())}>
+            <select className="flex text-[10px] md:text-[15px] flex-row items-center justify-between bg-black px-3 py-3 text-white rounded-md cursor-pointer" onChange={(e) => setDate(e.target.value.toLowerCase())}>
               <option>Date</option>
               <option>15th Feb</option>
               <option>16th Feb</option>

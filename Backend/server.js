@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8000;
 
 // app.use(cors())
 app.use(cors({
-    origin: ['https://www.invictusdtu.in'],
+    origin: ['https://www.invictusdtu.in', 'https://invictusdtu.in', 'http://localhost:3000'], // Allow specific origins
     methods: ['GET', 'POST'], // Allow only specific HTTP methods
     allowedHeaders: ['Content-Type', 'Authorization'] // Allow specific headers
   }));
