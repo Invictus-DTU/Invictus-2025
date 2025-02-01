@@ -42,7 +42,7 @@ function page() {
   };
 
   const fetchAllData = async () => {
-    const response = await fetch("https://invictus-backend-omega.vercel.app/api/events", {
+    const response = await fetch("https://invictus-2025-16ei.vercel.app/api/events", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -142,6 +142,16 @@ function page() {
             </select>
             <select className="mr-2 text-[12px] md:text-[15px] flex flex-row items-center justify-between bg-black px-3 py-3 text-white rounded-md cursor-pointer" onChange={(e) => setCategory(e.target.value.toLowerCase())}>
               <option className="mr-2">Category</option>
+              <option className="mr-2">Field Event</option>
+              <option className="mr-2">Quiz</option>
+              <option className="mr-2">Hackathon/Presentation</option>
+              <option className="mr-2">Robotics</option>
+              <option className="mr-2">Non Tech</option>
+              <option className="mr-2">Programming</option>
+              <option className="mr-2">Finance</option>
+              <option className="mr-2">Arcade</option>
+              <option className="mr-2">Design</option>
+
             </select>
             <select className="flex text-[12px] md:text-[15px] flex-row items-center justify-between bg-black px-3 py-3 text-white rounded-md cursor-pointer" onChange={(e) => setDate(e.target.value.toLowerCase())}>
               <option>Date</option>

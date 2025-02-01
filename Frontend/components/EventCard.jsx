@@ -15,7 +15,7 @@ const EventCard = ({ data, onClick }) => {
           {/* <img src="/event-demo-logo.png" className='w-[70%]' /> */}
 
           <h3 className="text-center text-2xl uppercase">{data.event_name}</h3>
-          <h3 className="text-center text-[12px] font-jmh">{data.category}</h3>
+          <h3 className="text-center text-[12px] font-jmh">{data.event_topic.toLowerCase()}</h3>
 
           <p className='text-[10px] px-4 font-jmh mt-4 font-limerick'>
             {data.event_desc}

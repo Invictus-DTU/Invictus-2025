@@ -8,7 +8,7 @@ function Navbar() {
   const [menu, setMenu] = useState(null);
 
   return (
-    <div className='relative z-0'>
+    <div className='relative z-0 md:z-auto'>
       <div className='justify-between gap-12 fixed w-full px-5 hidden md:flex z-20'>
         <div className='absolute -top-[19.1rem] left-5 duration-500 hover:top-20 hover:left-28 scale-90 hover:scale-175 hover:scale-x-200'>
           <button className={cn(
