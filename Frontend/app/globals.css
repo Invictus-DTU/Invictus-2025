@@ -63,6 +63,11 @@ img {
   animation-duration: 1.5s;
 }
 
+.visible-delay-short{
+  animation: fadeIn;
+  animation-duration: 0.5s;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -134,4 +139,8 @@ img {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+}
+
+.card-bg{
+  background: url('/event-card-bg.png') center/cover no-repeat;
 }

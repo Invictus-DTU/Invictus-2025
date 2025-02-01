@@ -2,26 +2,14 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 // import { CgClose } from 'react-icons/cg'
+import { X } from 'lucide-react'
 
-const EventCard = ({ data }) => {
-
-  const [eventCard, setEventCard] = useState(false)
+const EventCard = ({ data, onClick }) => {
 
   return (
     <>
-      {/* {
-        eventCard && (
-          <>
-            <div className='event-popup-overlay min-w-[100%] min-h-[100%] cursor-default' onClick={() => setEventCard(false)} />
-            <div className='event-popup min-h-[500px] w-[70vw] cursor-default'>
-                <div className="relative w-full min-h-[500px]">
-                  <button onClick={() => setEventCard(false)} className='absolute top-0 right-0 m-3'><CgClose size={34} /></button>
-                </div>
-            </div>
-          </>
-        )
-      } */}
-      <div className='my-3 flex flex-col items-center justify-center min-w-[60%] sm:min-w-[50%] md:min-w-[40%] lg:min-w-[28%] xl:min-w-[23%] max-h-[60vh] box-border pb-3 hover:scale-[1.02] hover:traslate-y-[10px] duration-[0.5s] rounded-md pt-2 mr-10 relative drop-shadow-[4px_6px_4px_rgba(0,0,0,0.3)] animate-event-card overflow-auto'>
+
+      <div className='my-3 flex flex-col items-center justify-center min-w-[60%] w-[60%] sm:min-w-[50%] sm:w-[50%] md:min-w-[40%] md:w-[40%] lg:min-w-[28%] lg:w-[28%] xl:min-w-[23%] xl:w-[23%] max-h-[60vh] box-border pb-3 hover:scale-[1.02] hover:traslate-y-[10px] duration-[0.5s] rounded-md pt-2 mr-10 relative drop-shadow-[4px_6px_4px_rgba(0,0,0,0.3)] animate-event-card overflow-auto card-bg'>
           <img src={data.logo_link} className='w-[30%] rounded-md' />
           {/* <img src="https://drive.google.com/thumbnail?id=1bGMnFJrM9lfMkovJMld-k66MGQ3gLOzg" className='w-[40%] rounded-md' /> */}
           {/* <img src="/event-demo-logo.png" className='w-[70%]' /> */}
@@ -52,10 +40,9 @@ const EventCard = ({ data }) => {
 
           <div className='flex flex-col w-full items-center justify-center mt-3'>
           
-          <button className='w-[80%] py-2 text-center bg-[#2F1414] hover:scale-[1.03] duration-[0.3s] text-white my-1 mx-1 rounded-full' onClick={() => setEventCard(true)}>More info</button>
+          <button className='w-[80%] py-2 text-center bg-[#2F1414] hover:scale-[1.03] duration-[0.3s] text-white my-1 mx-1 rounded-full' onClick={() => onClick(data)}>More info</button>
           <a href={data.unstop_link} target='_blank' className='w-[80%] py-2 text-center bg-[#2F1414] hover:scale-[1.03] duration-[0.3s] text-white my-1 mx-1 rounded-full'>Register Here</a>
           </div>
-          <img src="/event-card-bg.png" className='w-full h-full absolute z-[-1] top-0 left-0 rounded-md' />
 
 
           <img src="/event-card-mountain.png" className='absolute w-full bottom-0 z-[-1]' />

@@ -2,6 +2,7 @@
 import EventCard from "@/components/EventCard";
 import React, { useRef, useState, useEffect } from "react";
 import { Search } from "lucide-react";
+import PopUp from "@/components/PopUp";
 
 function page() {
   const scrollRef = useRef(null);
@@ -16,6 +17,9 @@ function page() {
   const [mode, setMode] = useState("mode");
   const [category, setCategory] = useState("category");
   const [date, setDate] = useState("date");
+  
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [popUpData, setPopUpData] = useState({unstop_link: "#", prizes: {'Winner': 'Prize'}, event_desc: ''});
 
 
   const handleMouseDown = (e) => {
@@ -114,6 +118,11 @@ function page() {
     });
   }, []);
 
+  const handleOnClick = (data) => {
+    setPopUpData(data);
+    setShowPopUp(true);
+  }
+
   return (
     <>
       <div className="visible-delay flex flex-col items-center sm:items-start justify-start text-black px-4 sm:px-4 md:px-6 lg:px-16 -mt-5 md:mt-28 lg:mt-24 overflow-auto z-10">
@@ -164,20 +173,12 @@ function page() {
             onMouseLeave={handleMouseUp}
           >
             {events.map((event, index) => (
-              <>
-                <EventCard key={index} data={event} />
-                <EventCard key={index} data={event} />
-                <EventCard key={index} data={event} />
-                <EventCard key={index} data={event} />
-                <EventCard key={index} data={event} />
-                <EventCard key={index} data={event} />
-                <EventCard key={index} data={event} />
-                <EventCard key={index} data={event} />
-
-              </>
+                <EventCard key={index} data={event} onClick={handleOnClick} />
             ))}
           </div>
+
         </div>
+        <PopUp data={popUpData} show={showPopUp} setShowPopUp={setShowPopUp} />
       </div>
     </>
   );
