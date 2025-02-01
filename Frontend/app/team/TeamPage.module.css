@@ -1,0 +1,462 @@
+/* Basic page setup */
+.pageWrapper {
+  /* min-height: 100vh; */
+  width: 65%;
+  height: 75%;
+  position: relative;
+  z-index: 18;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-color: #000000;
+  border-width: 2px;
+}
+
+/* Title styling */
+.titleContainer {
+  width: 100%;
+  padding: 2rem;
+}
+
+.title {
+  color: #000;
+  font-size: 4rem;
+  /* font-weight: 900; */
+  /* letter-spacing: 12px; */
+  /* text-transform: uppercase; */
+  margin: 0;
+  padding-left: 2rem;
+  position: relative;
+  font-family: var(--font-primary);
+  -webkit-text-stroke: 2px #000;
+  /* text-shadow: 3px 0 rgba(255, 0, 0, 0.3); */
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 0.5s;
+  /* margin-bottom: -1rem;
+  margin-top: -1rem; */
+}
+
+/* Main team layout */
+.teamLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  transform: translateX(-22%);
+  margin-top: -5rem;
+}
+
+/* Layout state when a card is expanded */
+.teamLayout.expanded {
+  transform: translateX(-150%);
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.teamLayout.expanded .memberCircle {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+/* Row styling for 2-3-2 layout */
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 7rem;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Specific row positioning */
+.row:first-child {
+  position: relative;
+  top: 0.3rem;
+  margin-top: 2rem;
+}
+
+.row:nth-child(2) {
+  gap: 8.5rem;
+  margin-top: -1.5rem;
+}
+
+.row:last-child {
+  margin-top: -1.5rem;
+}
+
+/* Team member circles */
+.memberCircle {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transform-origin: center;
+  z-index: 2;
+}
+
+/* Circle states */
+.memberCircle:hover { 
+  z-index: 100;
+  position: relative;
+}
+
+.memberCircle.selected {
+  transform: none;
+  opacity: 1;
+  z-index: 1;
+}
+
+.memberCircle.shifted {
+  transform: scale(0.8);
+  opacity: 0.7;
+}
+
+/* Member images */
+.memberImage {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.memberCircle:hover .memberImage {
+  transform: scale(1.1);
+}
+
+/* Hover effects and interactions */
+.memberCircle:hover .memberDetails {
+  bottom: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.memberCircle:hover:not(.shifted):not(.selected) {
+  transform: translateY(-5px) scale(1.05);
+  z-index: 100;
+}
+
+/* Remove the old z-index layering that was causing issues */
+.row:first-child .memberCircle,
+.row:nth-child(2) .memberCircle,
+.row:last-child .memberCircle {
+  z-index: 2;
+}
+
+.row:first-child .memberCircle:hover,
+.row:nth-child(2) .memberCircle:hover,
+.row:last-child .memberCircle:hover {
+  z-index: 100;
+}
+
+/* Member info overlay on hover */
+.memberDetails {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(255, 0, 0, 0.7));
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  z-index: 101;
+  pointer-events: none;
+}
+
+.memberDetails h3 {
+  color: #fff;
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.memberDetails p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 2px 0;
+  font-size: 0.7rem;
+}
+
+/* Expanded card overlay */
+.cardOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 15%;
+}
+
+/* Expanded member card */
+.expandedCard {
+  position: relative;
+  width: 800px;
+  height: 400px;
+  background: url('/bg.png') center/cover no-repeat;
+  background-color: #f5f5dc;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: cardEnter 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
+  overflow: hidden;
+}
+
+/* Close button */
+.closeButtonWrapper {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 2;
+}
+
+.closeButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 0, 0, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.closeButton:hover {
+  background: rgba(255, 0, 0, 1);
+  transform: rotate(90deg);
+}
+
+/* Card content layout */
+.cardContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  height: 100%;
+}
+
+.cardImage {
+  position: relative;
+  width: 300px;
+  height: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
+/* Card text content */
+.cardDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  text-align: left;
+  padding: 1rem;
+}
+
+.cardDetails h2 {
+  font-size: 2.5rem;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  font-family: var(--font-primary);
+  letter-spacing: 2px;
+  color: #000;
+}
+
+.role {
+  font-size: 1.4rem;
+  color: rgba(255, 0, 0, 0.8);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.contact {
+  font-size: 1.1rem;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 2rem;
+}
+
+/* Social media links */
+.socialLinks {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  margin-top: auto;
+}
+
+.socialLink {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 8px;
+}
+
+.socialLink:hover {
+  background: rgba(255, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.socialIcon {
+  width: 24px !important;
+  height: 24px !important;
+  filter: brightness(0) !important;
+  opacity: 1 !important;
+  object-fit: contain;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 1400px) {
+  .teamLayout { transform: translateX(-18%); }
+  .memberCircle {
+    width: 140px;
+    height: 140px;
+  }
+  .row { gap: 6.5rem; }
+  .row:nth-child(2) { gap: 8rem; }
+}
+
+@media (max-width: 1200px) {
+  .title {
+    font-size: 5rem;
+    padding-left: 1rem;
+  }
+  .teamLayout { transform: translateX(-8%); }
+  .memberCircle {
+    width: 130px;
+    height: 130px;
+  }
+  .row { gap: 6rem; }
+  .row:nth-child(2) { gap: 7.5rem; }
+}
+
+@media (max-width: 992px) {
+  .title { font-size: 4.5rem; }
+  .teamLayout {
+    transform: translateX(-3%);
+    margin-top: -3rem;
+  }
+  .memberCircle {
+    width: 120px;
+    height: 120px;
+  }
+  .row { gap: 5.5rem; }
+  .row:nth-child(2) { gap: 7rem; }
+  
+  /* Card adjustments for tablets */
+  .expandedCard {
+    width: 90%;
+    height: auto;
+    min-height: 400px;
+    margin: 0 auto;
+  }
+  .cardContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .cardImage {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 4rem;
+    padding-left: 0.5rem;
+  }
+  .teamLayout {
+    transform: translateX(0);
+    margin-top: -2rem;
+  }
+  .memberCircle {
+    width: 110px;
+    height: 110px;
+  }
+  .row { gap: 4.5rem; }
+  .row:nth-child(2) { gap: 6rem; }
+  .memberDetails h3 { font-size: 0.7rem; }
+  .memberDetails p { font-size: 0.6rem; }
+}
+
+@media (max-width: 576px) {
+  .title { font-size: 3rem; }
+  .teamLayout { gap: 0.15rem; }
+  .memberCircle {
+    width: 100px;
+    height: 100px;
+  }
+  .row { gap: 4rem; }
+  .row:nth-child(2) { gap: 5.5rem; }
+  .cardDetails h2 { font-size: 2rem; }
+  .role { font-size: 1.2rem; }
+  .contact { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  .title { font-size: 2.5rem; }
+  .memberCircle {
+    width: 90px;
+    height: 90px;
+  }
+  .row { gap: 3.5rem; }
+  .row:nth-child(2) { gap: 5rem; }
+  .memberDetails {
+    padding: 0.5rem 0.3rem;
+  }
+  .memberDetails h3 { font-size: 0.6rem; }
+  .memberDetails p { font-size: 0.5rem; }
+} 
