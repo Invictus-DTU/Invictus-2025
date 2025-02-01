@@ -22,25 +22,25 @@ function Terrain() {
       <div className={'flex justify-center items-end gap-10 z-0'}>
         <img src="/bonsai-right.svg" alt="first" className={cn(
           "w-24 absolute bottom-16 duration-1000 left-0 hidden lg:block",
-          path === "/comingsoon" && "-left-40",
+          (path === "/comingsoon" || path === "/events") && "-left-40",
           path === "/team" && "-left-48",
           )} />
           
         <img src="/bonsai-left.svg" alt="second" className={cn(
           "w-24 absolute left-[10%] bottom-16 duration-1000 hidden lg:block",
-          path === "/comingsoon" && "left-6",
+          (path === "/comingsoon" || path === "/events") && "left-6",
           path === "/team" && "-left-48",
           )} />
           
         <img src="/twintower.svg" alt="" className={cn(
           "w-48 brightness-0 duration-1000 absolute bottom-12 -left-48 sm:-left-16 md:left-[3%] lg:left-[18%]",
-          path === "/comingsoon" && "w-40 bottom-14 sm:-left-48 md:-left-10 lg:left-[9%]",
+          (path === "/comingsoon" || path === "/events") && "w-40 bottom-14 sm:-left-48 md:-left-10 lg:left-[9%]",
           path === "/team" && "lg:-left-48",
           )} />
 
         <img src="/bonsai-left.svg" alt="third" className={cn(
           "w-24 absolute bottom-16 duration-1000 left-0 sm:left-[17%] md:left-[24%] lg:left-[34%]",
-          path === "/comingsoon" && "-left-5 sm:-left-5 md:left-[13.5%] lg:left-[23%]",
+          (path === "/comingsoon" || path === "/events") && "-left-5 sm:-left-5 md:left-[13.5%] lg:left-[23%]",
           path === "/team" && "lg:left-[1%]",
           )} />
 
@@ -52,19 +52,19 @@ function Terrain() {
 
         <img src="/bonsai-right.svg" alt="forth" className={cn(
           "w-24 absolute bottom-16 duration-1000 right-0 sm:right-[17%] md:right-[24%] lg:right-[34%]",
-          path === "/comingsoon" && "-right-5 sm:right-[52%] md:right-[43%] lg:right-[45%]",
+          (path === "/comingsoon" || path === "/events") && "-right-5 sm:right-[52%] md:right-[43%] lg:right-[45%]",
           path === "/team" && "lg:right-[74%]",
           )} />
 
         <img src="/bonsai-left.svg" alt="fifth" className={cn(
           "w-24 absolute bottom-16 duration-1000 right-[18%] hidden lg:block",
-          path === "/comingsoon" && "right-[33%]",
+          (path === "/comingsoon" || path === "/events") && "right-[33%]",
           path === "/team" && "right-[64%]",
           )} />
 
         <img src="/tnpblock1.png" alt="" className={cn(
           "w-40 duration-1000 absolute bottom-[4.5rem] -right-48 sm:-right-16 md:right-0",
-          path === "/comingsoon" && "w-3/4 sm:w-[49%] md:w-[40%] lg:w-[30%] bottom-[3.5rem] left-auto right-auto sm:right-[1rem]",
+          (path === "/comingsoon" || path === "/events") && "w-3/4 sm:w-[49%] md:w-[40%] lg:w-[30%] bottom-[3.5rem] left-auto right-auto sm:right-[1rem]",
           path === "/team" && "bottom-[4rem] sm:-right-16 md:right-[51%]",
           )} />
 

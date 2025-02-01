@@ -8,11 +8,11 @@ function Navbar() {
   const [menu, setMenu] = useState(null);
 
   return (
-    <div>
+    <div className='relative'>
       <div className='justify-between gap-12 fixed w-full px-5 hidden md:flex z-20'>
-        <div>
+        <div className='absolute -top-[19.1rem] left-5 duration-500 hover:top-20 hover:left-28 scale-90 hover:scale-175 hover:scale-x-200'>
           <button className={cn(
-            'relative -top-[78%] left-0 scale-90 duration-500 hover:scale-175 hover:scale-x-200 hover:top-20 hover:left-20')}>
+            'relative ')}>
             <img src='/fullscroll1.svg' className='z-0 scale-90'/>
 
             <p className='absolute top-[7rem] left-14 w-[6.35rem] right-0 z-10 text-black text-[9px] font-jmh'>
@@ -69,7 +69,7 @@ function Navbar() {
                   </li>
                 </Link>
 
-                <Link href={'/comingsoon'} onClick={() => setMenu(false)}>
+                <Link href={'/events'} onClick={() => setMenu(false)}>
                   <li>
                     Events
                   </li>
