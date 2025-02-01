@@ -42,7 +42,7 @@ function page() {
   };
 
   const fetchAllData = async () => {
-    const response = await fetch("http://localhost:8000/api/events", {
+    const response = await fetch("https://invictus-backend-omega.vercel.app/api/events", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

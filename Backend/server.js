@@ -18,6 +18,10 @@ app.use(cors())
 
 app.use("/api/events", events)
 
+app.get('/', (req, res) => {
+    res.send("Hello World")
+})
+
 
 connectDB().then(() => {
     app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`))
