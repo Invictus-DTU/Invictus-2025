@@ -34,7 +34,7 @@ function Terrain() {
             alt=""
             className={cn(
               "w-48 brightness-0 duration-1000 absolute bottom-12 -left-48 sm:-left-16 md:left-[3%] lg:left-[18%]",
-              path === "/comingsoon" &&
+              path === "/comingsoon" | path === "/events"  &&
                 "w-40 bottom-14 sm:-left-48 md:-left-10 lg:left-[9%]"
             )}
           />
@@ -54,7 +54,7 @@ function Terrain() {
             alt="first"
             className={cn(
               "w-24 absolute bottom-16 duration-1000 left-0 hidden lg:block",
-              path === "/comingsoon" && "-left-40"
+              path === "/comingsoon" | path === "/events"  && "-left-40"
             )}
           />
           <img
@@ -62,15 +62,15 @@ function Terrain() {
             alt="second"
             className={cn(
               "w-24 absolute left-[10%] bottom-16 duration-1000 hidden lg:block",
-              path === "/comingsoon" && "left-6"
+              path === "/comingsoon" | path === "/events"  && "left-6"
             )}
           />
           <img
             src="/bonsai-left.svg"
             alt="third"
             className={cn(
-              "w-24 absolute bottom-16 duration-1000 left-0 sm:left-[17%] md:left-[24%] lg:left-[34%]",
-              path === "/comingsoon" &&
+              "w-24 absolute bottom-16 duration-1000 left-0 sm:left-[17%] md:left-[24%] lg:left-[34%] ",
+              path === "/comingsoon" | path === "/events"  &&
                 "-left-5 sm:-left-5 md:left-[13.5%] lg:left-[23%]"
             )}
           />
@@ -79,7 +79,7 @@ function Terrain() {
             alt="forth"
             className={cn(
               "w-24 absolute bottom-16 duration-1000 right-0 sm:right-[17%] md:right-[24%] lg:right-[34%]",
-              path === "/comingsoon" &&
+              path === "/comingsoon" | path === "/events"  &&
                 "-right-5 sm:right-[52%] md:right-[43%] lg:right-[45%]"
             )}
           />
@@ -88,7 +88,7 @@ function Terrain() {
             alt="fifth"
             className={cn(
               "w-24 absolute bottom-16 duration-1000 right-[18%] hidden lg:block",
-              path === "/comingsoon" && "right-[33%]"
+              path === "/comingsoon" | path === "/events"  && "right-[33%]"
             )}
           />
 
@@ -97,7 +97,7 @@ function Terrain() {
             alt=""
             className={cn(
               "w-40 duration-1000 absolute bottom-[4.5rem] -right-48 sm:-right-16 md:right-0",
-              path === "/events" &&
+              path === "/comingsoon" | path === "/events"  &&
                 "w-3/4 sm:w-[49%] md:w-[40%] lg:w-[30%] bottom-[3.5rem] left-auto right-auto sm:right-[1rem]"
             )}
           />
@@ -105,7 +105,9 @@ function Terrain() {
 
         <img className={"w-full h-24 z-0"} src="/terrain.png" alt="" />
       </div>
-      <Bottombar className={"absolute z-[1] left-0 bottom-0 top-auto mb-4 px-10"} />
+      <Bottombar
+        className={"absolute z-[1] left-0 bottom-0 top-auto mb-4 px-10"}
+      />
     </>
   );
 }
