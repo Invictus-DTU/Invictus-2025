@@ -11,7 +11,7 @@ function Bottombar({className}) {
         },
         {
             name: 'Events',
-            link: '/comingsoon'
+            link: '/events'
         },
         {
             name: 'Workshops',
