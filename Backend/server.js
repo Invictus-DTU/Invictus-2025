@@ -9,12 +9,12 @@ dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 8000;
 
-app.use(cors())
-// app.use(cors({
-//     origin: ['https://example.com', 'https://another-allowed.com'],
-//     methods: ['GET', 'POST'], // Allow only specific HTTP methods
-//     allowedHeaders: ['Content-Type', 'Authorization'] // Allow specific headers
-//   }));
+// app.use(cors())
+app.use(cors({
+    origin: ['*'],
+    methods: ['GET', 'POST'], // Allow only specific HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allow specific headers
+  }));
 
 app.use("/api/events", events)
 
