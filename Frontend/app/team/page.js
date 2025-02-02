@@ -1,244 +1,166 @@
 'use client'
-import React, { useState } from 'react'
-import styles from './TeamPage.module.css'
-import Image from 'next/image'
+import React, {useState, useEffect, useRef} from 'react'
+import { Instagram, Linkedin } from 'lucide-react'
 import Link from 'next/link'
 
-const TeamPage = () => {
-  const [selectedMember, setSelectedMember] = useState(null);
+function page() {
+    const scrollRef = useRef(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
 
-  const teamMembers = [
-    {
-      id: 1,
-      name: "Member 1",
-      role: "Role 1",
-      phone: "Contact Info",
-      socialLinks: {
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com"
-      }
-    },
-    {
-      id: 2,
-      name: "Member 2",
-      role: "Role 2",
-      phone: "Contact Info",
-      socialLinks: {
-        linkedin: "https://linkedin.com",
-        instagram: "https://instagram.com"
-      }
-    },
-    {
-      id: 3,
-      name: "Member 3",
-      role: "Role 3",
-      phone: "Contact Info",
-    },
-    {
-      id: 4,
-      name: "Member 4",
-      role: "Role 4",
-      phone: "Contact Info",
-    },
-    {
-      id: 5,
-      name: "Member 5",
-      role: "Role 5",
-      phone: "Contact Info",
-    },
-    {
-      id: 6,
-      name: "Member 6",
-      role: "Role 6",
-      phone: "Contact Info",
-    },
-    {
-      id: 7,
-      name: "Member 7",
-      role: "Role 7",
-      phone: "Contact Info",
-    },
-  ]
+    const teamMembers = [
+        {
+          id: 1,
+          name: "Khobaib Akmal",
+          role: "Gen. Secretary",
+          phone: "+91 8869816786",
+          img: "/council/khobaib.jpg",
+          socialLinks: {
+            linkedin: "#",
+            instagram: "https://www.instagram.com/kdotakmal"
+          }
+        },
+        {
+          id: 2,
+          name: "shivang Dwivedi",
+          role: "Treasurer",
+          phone: "+91 6392199393",
+          img: "/council/shivang.jpg",
+          socialLinks: {
+            linkedin: "https://www.linkedin.com/in/shivang-dwivedii",
+            instagram: "https://www.instagram.com/shivangg_dwivedii"
+          }
+        },
+        {
+          id: 3,
+          name: "Ishan Chugh",
+          role: "Jt. Secretary",
+          phone: "+91 9267952938",
+          img: "/council/ishan.jpg",
+          socialLinks: {
+            linkedin: "https://www.linkedin.com/in/ishanchugh01",
+            instagram: "https://www.instagram.com/chugh.ishan_"
+          }
+        },
+        {
+          id: 4,
+          name: "Vaishnavi Saraswat",
+          role: "Jt. Secretary",
+          phone: "+91 9650461478",
+          img: "/council/vaishnavi.jpg",
+          socialLinks: {
+            linkedin: "https://www.linkedin.com/in/vaishnavi-saraswat-44967424b",
+            instagram: "https://www.instagram.com/vaishnavii_s04"
+          }
+        },
+        {
+          id: 5,
+          name: "Tasneem Ahmed",
+          role: "Jt. Secretary",
+          phone: "+91 8376031863",
+          img: "/council/tasneem.jpg",
+          socialLinks:{
+            linkedin: "https://www.linkedin.com/in/tasneem-a-2b87b61a5",
+            instagram: "https://www.instagram.com/tasneemahmed_28"
+          }
+        },
+        {
+          id: 6,
+          name: "Sameeksha",
+          role: "Jt. Treasurer",
+          phone: "+91 7206567950",
+          img: "/council/sameeksha.jpg",
+            socialLinks: {
+                linkedin: "https://www.linkedin.com/in/sam13299",
+                instagram: "#"
+            }
+        },
+        {
+          id: 7,
+          name: "Yatharth Bisht",
+          role: "Jt. Treasurer",
+          phone: "+91 8882359577",
+          img: "/council/yatharth.jpg",
+          socialLinks: {
+            linkedin: "https://www.linkedin.com/in/yatharth-bisht-8a559b241",
+            instagram: "https://www.instagram.com/yatharth.bisht"
+          }
+        }
+    ]
 
-  const handleMemberClick = (member) => {
-    setSelectedMember(member);
-  }
+    const handleMouseDown = (e) => {
+        if (!scrollRef.current) return;
+        setIsDragging(true);
+        setStartX(e.pageX - scrollRef.current.offsetLeft);
+        setScrollLeft(scrollRef.current.scrollLeft);
+      };
+    
+      const handleMouseMove = (e) => {
+        if (!isDragging || !scrollRef.current) return;
+        e.preventDefault();
+        const x = e.pageX - scrollRef.current.offsetLeft;
+        const walk = (x - startX) * 1.3;
+        scrollRef.current.scrollLeft = scrollLeft - walk;
+      };
+    
+      const handleMouseUp = () => {
+        setIsDragging(false);
+      };
 
-  const handleClose = () => {
-    setSelectedMember(null);
-  }
+      useEffect(() => {
+          var item = document.getElementById("scroll");
+      
+          window.addEventListener("wheel", function (e) {
+            if (e.deltaY > 0) item.scrollLeft += 100;
+            else item.scrollLeft -= 100;
+          });
+        }, []);
 
   return (
-    <div className={styles.pageWrapper}>
-      <div className={styles.titleContainer}>
-        <h1 className={styles.title}>Our Team</h1>
-      </div>
-      
-      <div className={`${styles.teamLayout} ${selectedMember ? styles.expanded : ''}`}>
-        {/* First Row - 2 members */}
-        <div className={styles.row}>
-          {teamMembers.slice(0, 2).map(member => (
-            <div 
-              key={member.id} 
-              className={`${styles.memberCircle} ${selectedMember?.id === member.id ? styles.selected : ''}`}
-              onClick={() => handleMemberClick(member)}
-              role="button"
-              tabIndex={0}
-              style={{ cursor: 'pointer' }}
-            >
-              <Image
-                src="/god.jpg"
-                alt={member.name}
-                fill
-                sizes="(max-width: 480px) 90px,
-                       (max-width: 576px) 100px,
-                       (max-width: 768px) 110px,
-                       (max-width: 992px) 120px,
-                       (max-width: 1200px) 130px,
-                       (max-width: 1400px) 140px,
-                       150px"
-                quality={90}
-                priority={member.id <= 2}
-                className={styles.memberImage}
-              />
-              <div className={styles.memberDetails}>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-                <p>{member.phone}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+    <div className='flex flex-col w-full h-[90%] gap-5 absolute top-0 left-0 md:relative pt-[15%] md:pt-[5%] px-5 bg-black/20 z-0 md:z-10 overflow-auto'>
+        <h1 className='text-5xl text-center'>
+            Our Team
+        </h1>
 
-        {/* Second Row - 3 members */}
-        <div className={styles.row}>
-          {teamMembers.slice(2, 5).map(member => (
-            <div 
-              key={member.id} 
-              className={`${styles.memberCircle} ${selectedMember?.id === member.id ? styles.selected : ''}`}
-              onClick={() => handleMemberClick(member)}
-              role="button"
-              tabIndex={0}
-              style={{ cursor: 'pointer' }}
-            >
-              <Image
-                src="/god.jpg"
-                alt={member.name}
-                fill
-                sizes="(max-width: 480px) 90px,
-                       (max-width: 576px) 100px,
-                       (max-width: 768px) 110px,
-                       (max-width: 992px) 120px,
-                       (max-width: 1200px) 130px,
-                       (max-width: 1400px) 140px,
-                       150px"
-                quality={90}
-                priority={member.id <= 2}
-                className={styles.memberImage}
-              />
-              <div className={styles.memberDetails}>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-                <p>{member.phone}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <div 
+            className='flex gap-5 overflow-x-scroll select-none no-scrollbar cursor-grab active:cursor-grabbing'
+            id='scroll'
+            ref={scrollRef}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+        >
+            {teamMembers.map((member, index) => 
+                <div className='card-bg rounded-md p-5 min-w-[65vw] w-[65vw] sm:min-w-[35vw] sm:w-[35vw] md:min-w-[28vw] md:w-[28vw] lg:min-w-[20vw] lg:w-[20vw] min-h-[60vh] h-[60vh] md:min-h-[57vh] md:h-[57vh] lg:min-h-[50vh] lg:h-[50vh] flex flex-col gap-3 items-center' key={index}>
+                    <img src={member.img} alt={member.name} className='w-3/4 lg:w-1/2 aspect-square object-cover rounded-full' />
 
-        {/* Third Row - 2 members */}
-        <div className={styles.row}>
-          {teamMembers.slice(5, 7).map(member => (
-            <div 
-              key={member.id} 
-              className={`${styles.memberCircle} ${selectedMember?.id === member.id ? styles.selected : ''}`}
-              onClick={() => handleMemberClick(member)}
-              role="button"
-              tabIndex={0}
-              style={{ cursor: 'pointer' }}
-            >
-              <Image
-                src="/god.jpg"
-                alt={member.name}
-                fill
-                sizes="(max-width: 480px) 90px,
-                       (max-width: 576px) 100px,
-                       (max-width: 768px) 110px,
-                       (max-width: 992px) 120px,
-                       (max-width: 1200px) 130px,
-                       (max-width: 1400px) 140px,
-                       150px"
-                quality={90}
-                priority={member.id <= 2}
-                className={styles.memberImage}
-              />
-              <div className={styles.memberDetails}>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-                <p>{member.phone}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+                    <h1 className='w-full text-center text-xl font-jmh lowercase'>
+                        {member.name}
+                    </h1>
 
-      {selectedMember && (
-        <div className={styles.cardOverlay} onClick={handleClose}>
-          <div className={styles.expandedCard} onClick={e => e.stopPropagation()}>
-            <div className={styles.closeButtonWrapper}>
-              <button className={styles.closeButton} onClick={handleClose}>
-                <Image 
-                  src="/close.svg" 
-                  alt="Close" 
-                  width={16} 
-                  height={16} 
-                  className={styles.crossIcon}
-                />
-              </button>
-            </div>
-            <div className={styles.cardContent}>
-              <div className={styles.cardImage}>
-                <Image
-                  src="/god.jpg"
-                  alt={selectedMember.name}
-                  fill
-                  sizes="(max-width: 992px) 150px,
-                          200px"
-                  quality={90}
-                  priority
-                  className={styles.memberImage}
-                />
-              </div>
-              <div className={styles.cardDetails}>
-                <h2>{selectedMember.name}</h2>
-                <p className={styles.role}>{selectedMember.role}</p>
-                <p className={styles.contact}>{selectedMember.phone}</p>
-                <div className={styles.socialLinks}>
-                  <Link href={selectedMember.socialLinks?.linkedin || "https://linkedin.com"} target="_blank" className={styles.socialLink}>
-                    <Image 
-                      src="linkedin.svg"
-                      alt="LinkedIn" 
-                      width={24} 
-                      height={24} 
-                      className={styles.socialIcon}
-                    />
-                  </Link>
-                  <Link href={selectedMember.socialLinks?.instagram || "https://instagram.com"} target="_blank" className={styles.socialLink}>
-                    <Image 
-                      src="/iconmonstr-instagram-11-240.png"
-                      alt="Instagram" 
-                      width={24} 
-                      height={24} 
-                      className={styles.socialIcon}
-                    />
-                  </Link>
+                    <p className='font-jmh tracking-widest lowercase bg-[#2F1414] text-white rounded-full px-4 py-1 text-sm'>
+                        {member.role}
+                    </p>
+
+                    <p className='font-jmh tracking-wide'>
+                        {member.phone}
+                    </p>
+
+                    <div className='flex-1 flex items-end justify-center gap-5'>
+                        <Link href={member.socialLinks?.linkedin || "https://linkedin.com"} target="_blank" className={'bg-[#DE1B19]/20 p-2 rounded-full border-2 duration-300 border-[#DE1B19]/30 hover:bg-[#DE1B19]/30 hover:border-[#DE1B19]/50 hover:-translate-y-1'}>
+                            <Linkedin size={24} />
+                        </Link>
+                        <Link href={member.socialLinks?.instagram || "https://instagram.com"} target="_blank" className={'bg-[#DE1B19]/20 p-2 rounded-full border-2 duration-300 border-[#DE1B19]/30 hover:bg-[#DE1B19]/30 hover:border-[#DE1B19]/50 hover:-translate-y-1'}>
+                            <Instagram size={24} />
+                        </Link>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
+            )}
         </div>
-      )}
     </div>
   )
 }
 
-export default TeamPage
+export default page

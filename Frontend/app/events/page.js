@@ -1,7 +1,7 @@
 "use client";
 import EventCard from "@/components/EventCard";
 import React, { useRef, useState, useEffect } from "react";
-import { Search } from "lucide-react";
+import { Search, CircleChevronRight } from "lucide-react";
 import PopUp from "@/components/PopUp";
 
 function page() {
@@ -111,10 +111,20 @@ function page() {
   useEffect(() => {
     fetchAllData();
     var item = document.getElementById("scroll");
+    var rightBtn = document.getElementById("right");
+    var leftBtn = document.getElementById("left");
 
     window.addEventListener("wheel", function (e) {
       if (e.deltaY > 0) item.scrollLeft += 100;
       else item.scrollLeft -= 100;
+    });
+
+    rightBtn.addEventListener("click", function () {
+      item.scrollLeft += 100;
+    });
+
+    leftBtn.addEventListener("click", function () {
+      item.scrollLeft -= 100;
     });
   }, []);
 
@@ -189,6 +199,9 @@ function page() {
 
         </div>
         <PopUp data={popUpData} show={showPopUp} setShowPopUp={setShowPopUp} />
+
+        <CircleChevronRight id="right" size={40} fill="#2F1414" color="white" className="mt-5 cursor-pointer absolute right-5 top-[45%]" />
+        <CircleChevronRight id="left" size={40} fill="#2F1414" color="white" className="mt-5 cursor-pointer absolute left-5 top-[45%] rotate-180" />
       </div>
     </>
   );

@@ -81,7 +81,7 @@ function Navbar() {
                   </li>
                 </Link>
 
-                <Link href={'/comingsoon'} onClick={() => setMenu(false)}>
+                <Link href={'/team'} onClick={() => setMenu(false)}>
                   <li>
                     Our Team
                   </li>

@@ -35,37 +35,37 @@ function Terrain() {
         <img src="/twintower.svg" alt="" className={cn(
           "w-48 brightness-0 duration-1000 absolute bottom-12 -left-48 sm:-left-16 md:left-[3%] lg:left-[18%]",
           (path === "/comingsoon" || path === "/events") && "w-40 bottom-14 sm:-left-48 md:-left-10 lg:left-[9%]",
-          path === "/team" && "lg:-left-48",
+          path === "/team" && "sm:-left-48 md:-left-48 lg:-left-48",
           )} />
 
         <img src="/bonsai-left.svg" alt="third" className={cn(
           "w-24 absolute bottom-16 duration-1000 left-0 sm:left-[17%] md:left-[24%] lg:left-[34%]",
           (path === "/comingsoon" || path === "/events") && "-left-5 sm:-left-5 md:left-[13.5%] lg:left-[23%]",
-          path === "/team" && "lg:left-[1%]",
+          path === "/team" && "sm:-left-48 md:-left-8 lg:left-[-3%] xl:left-[1%]",
           )} />
 
         <img src="/dtu_gate2.png" alt="" className={cn(
           "w-32 brightness-0 duration-1000 absolute -left-48 sm:left-[14%] md:left-[27%] lg:left-[36%] xl:left-[33%] bottom-16",
           path === "/" && "brightness-100 left-0 sm:left-[5%] md:left-[20.5%] lg:left-[24.5%] xl:left-[24.5%] w-full sm:w-[90%] md:w-3/5 lg:w-1/2",
-          path === "/team" && "lg:left-[10%] xl:left-[10%]",
+          path === "/team" && "sm:-left-20 md:left-[6%] lg:left-[5%] xl:left-[10%]",
           )} />
 
         <img src="/bonsai-right.svg" alt="forth" className={cn(
           "w-24 absolute bottom-16 duration-1000 right-0 sm:right-[17%] md:right-[24%] lg:right-[34%]",
           (path === "/comingsoon" || path === "/events") && "-right-5 sm:right-[52%] md:right-[43%] lg:right-[45%]",
-          path === "/team" && "lg:right-[74%]",
+          path === "/team" && "sm:right-[82%] md:right-[71%] lg:right-[77%] xl:right-[74%]",
           )} />
 
         <img src="/bonsai-left.svg" alt="fifth" className={cn(
           "w-24 absolute bottom-16 duration-1000 right-[18%] hidden lg:block",
           (path === "/comingsoon" || path === "/events") && "right-[33%]",
-          path === "/team" && "right-[64%]",
+          path === "/team" && "lg:right-[67%] xl:right-[64%]",
           )} />
 
         <img src="/tnpblock1.png" alt="" className={cn(
           "w-40 duration-1000 absolute bottom-[4.5rem] -right-48 sm:-right-16 md:right-0",
           (path === "/comingsoon" || path === "/events") && "w-3/4 sm:w-[49%] md:w-[40%] lg:w-[30%] bottom-[3.5rem] left-auto right-auto sm:right-[1rem]",
-          path === "/team" && "bottom-[4rem] sm:-right-16 md:right-[51%]",
+          path === "/team" && "bottom-[4rem] sm:right-[60%] md:right-[53%] lg:right-[53%] xl:right-[51%]",
           )} />
 
         <img src="/bonsai-right.svg" alt="sixth" className={cn(
@@ -73,14 +73,14 @@ function Terrain() {
           path === "/team" && "right-[42%]",
           )} />
 
-        <img src="/bonsai-left.svg" alt="fifth" className={cn(
-          "w-24 absolute bottom-16 duration-1000 -right-48 hidden lg:block",
-          path === "/team" && "right-[34%]",
+        <img src="/bonsai-left.svg" alt="seventh" className={cn(
+          "w-24 absolute bottom-16 duration-1000 -right-48 hidden sm:block",
+          path === "/team" && "sm:right-[49%] md:right-[41%] lg:right-[32%] xl:right-[34%]",
           )} />
 
         <img src="/twintower.svg" alt="" className={cn(
           "w-48 brightness-0 duration-1000 absolute bottom-12 -right-48",
-          path === "/team" && "w-3/4 sm:w-[49%] md:w-[40%] lg:w-[45%] -bottom-4 -right-24",
+          path === "/team" && "w-[100%] sm:w-[75%] md:w-[60%] lg:w-[47%] xl:w-[45%] -bottom-4 -right-2 sm:-right-24 md:-right-[6.5rem] lg:-right-24 xl:-right-24",
           )} />
       </div>
 
