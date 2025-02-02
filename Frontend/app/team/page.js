@@ -118,7 +118,7 @@ function page() {
         }, []);
 
   return (
-    <div className='flex flex-col w-full h-[90%] gap-5 absolute top-0 left-0 md:relative pt-[15%] md:pt-[5%] px-5 bg-black/20 z-0 md:z-10 overflow-auto'>
+    <div className='flex flex-col w-full h-[93%] gap-5 absolute top-0 left-0 md:relative pt-[15%] md:pt-[5%] px-5 bg-black/20 z-0 md:z-10 overflow-auto'>
         <h1 className='text-5xl text-center'>
             Our Team
         </h1>

@@ -145,17 +145,61 @@ img {
   background: url('/event-card-bg.png') center/cover no-repeat;
 }
 
-
 .move{
-  animation: move 30s infinite linear;
-  will-change: transform;
+  animation: move 5s infinite linear;
+}
+
+.move:hover{
+  animation-play-state: paused;
+}
+
+@media screen and (max-width: 1280px){
+  .move{
+    animation: move 11s infinite linear;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .move{
+    animation: move 17s infinite linear;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .move{
+    animation: move 23s infinite linear;
+  }
+}
+
+@media screen and (max-width: 640px){
+  .move{
+    animation: move 29s infinite linear;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .move{
+    animation: move 35s infinite linear;
+  }
 }
 
 @keyframes move {
   0%, 100% {
-    transform: translateX(2%);
+    transform: translateX(0);
   }
   50%{
-    transform: translateX(-61%);
+    transform: translateX(calc(100% - calc(12*8.25rem)));
+  }
+}
+
+@media screen and (max-width: 768px){
+  @keyframes move {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50%{
+      transform: translateX(calc(100% - calc(12*4.5rem)));
+    }
+    
   }
 }
