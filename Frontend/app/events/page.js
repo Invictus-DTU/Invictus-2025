@@ -3,6 +3,7 @@ import EventCard from "@/components/EventCard";
 import React, { useRef, useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import PopUp from "@/components/PopUp";
+import { useStore } from "@/context/AppContext";
 
 function page() {
   const scrollRef = useRef(null);
@@ -10,16 +11,15 @@ function page() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  const [data, setData] = useState([]);
-  const [events, setEvents] = useState([]);
+  const { data, events, setEvents } = useStore()
   const [disabled, setDisabled] = useState(false);
 
   const [mode, setMode] = useState("mode");
   const [category, setCategory] = useState("category");
   const [date, setDate] = useState("date");
-  
+
   const [showPopUp, setShowPopUp] = useState(false);
-  const [popUpData, setPopUpData] = useState({unstop_link: "#", prizes: {'Winner': 'Prize'}, event_desc: ''});
+  const [popUpData, setPopUpData] = useState({ unstop_link: "#", prizes: { 'Winner': 'Prize' }, event_desc: '' });
 
 
   const handleMouseDown = (e) => {
@@ -41,21 +41,9 @@ function page() {
     setIsDragging(false);
   };
 
-  const fetchAllData = async () => {
-    const response = await fetch("https://invictus-2025-16ei.vercel.app/api/events", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await response.json();
-    setData(data.events);
-    setEvents(data.events);
-  };
 
   const fetchFilteredData = async (query) => {
-    if (query === ""){
+    if (query === "") {
       setEvents(data);
       return;
     }
@@ -70,7 +58,7 @@ function page() {
   const filterData = () => {
     console.log(mode, category, date);
 
-    if(mode === "mode" && category === "category" && date === "date"){
+    if (mode === "mode" && category === "category" && date === "date") {
       setEvents(data);
       setDisabled(false);
       return
@@ -79,29 +67,29 @@ function page() {
     setDisabled(true);
 
     setEvents(data.filter((event) => {
-        if(mode !== "mode" && category !== "category" && date !== "date"){
-          return event.mode.toLowerCase() === mode && event.category.toLowerCase() === category && event.date.toLowerCase() === date;
-        }
-        else if(mode !== "mode" && category !== "category"){
-          return event.mode.toLowerCase() === mode && event.category.toLowerCase() === category;
-        }
-        else if(mode !== "mode" && date !== "date"){
-          return event.mode.toLowerCase() === mode && event.date.toLowerCase() === date;
-        }
-        else if(category !== "category" && date !== "date"){
-          return event.category.toLowerCase() === category && event.date.toLowerCase() === date;
-        }
-        else if(mode !== "mode"){
-          return event.mode.toLowerCase() === mode;
-        }
-        else if(category !== "category"){
-          return event.category.toLowerCase() === category;
-        }
-        else if(date !== "date"){
-          return event.date.toLowerCase() === date;
-        }
+      if (mode !== "mode" && category !== "category" && date !== "date") {
+        return event.mode.toLowerCase() === mode && event.category.toLowerCase() === category && event.date.toLowerCase() === date;
+      }
+      else if (mode !== "mode" && category !== "category") {
+        return event.mode.toLowerCase() === mode && event.category.toLowerCase() === category;
+      }
+      else if (mode !== "mode" && date !== "date") {
+        return event.mode.toLowerCase() === mode && event.date.toLowerCase() === date;
+      }
+      else if (category !== "category" && date !== "date") {
+        return event.category.toLowerCase() === category && event.date.toLowerCase() === date;
+      }
+      else if (mode !== "mode") {
+        return event.mode.toLowerCase() === mode;
+      }
+      else if (category !== "category") {
+        return event.category.toLowerCase() === category;
+      }
+      else if (date !== "date") {
+        return event.date.toLowerCase() === date;
+      }
     })
-  );
+    );
   }
 
   useEffect(() => {
@@ -109,7 +97,6 @@ function page() {
   }, [mode, category, date]);
 
   useEffect(() => {
-    fetchAllData();
     var item = document.getElementById("scroll");
 
     window.addEventListener("wheel", function (e) {
@@ -125,7 +112,7 @@ function page() {
 
   return (
     <>
-      <div className="visible-delay flex flex-col items-center sm:items-start justify-start text-black px-4 sm:px-4 md:px-6 lg:px-16 -mt-5 md:mt-28 lg:mt-24 overflow-auto z-[5]">
+      <div className="visible-delay flex flex-col items-center sm:items-start justify-start text-black px-4 sm:px-4 md:px-6 lg:px-16 -mt-5 md:mt-28 lg:mt-24 overflow-auto z-[3]">
         <div className="flex flex-col md:flex-row items-center justify-between w-full">
           <h1
             className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
@@ -183,7 +170,7 @@ function page() {
             onMouseLeave={handleMouseUp}
           >
             {events.map((event, index) => (
-                <EventCard key={index} data={event} onClick={handleOnClick} />
+              <EventCard key={index} data={event} onClick={handleOnClick} />
             ))}
           </div>
 

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styles from './TeamPage.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaInstagram, FaLinkedin } from 'react-icons/fa'
 
 const TeamPage = () => {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -69,17 +70,73 @@ const TeamPage = () => {
   }
 
   return (
-    <div className={styles.pageWrapper}>
-      <div className={styles.titleContainer}>
-        <h1 className={styles.title}>Our Team</h1>
+    <>
+      <div className="visible-delay flex flex-col items-center sm:items-start justify-center text-black px-4 sm:px-4 md:px-6 lg:px-16 -mt-5 md:mt-28 lg:mt-24 overflow-auto z-[3]">
+        <h1
+          className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
+        >
+          Our Team
+        </h1>
+
+
+        {selectedMember && (
+          <div className={styles.cardOverlay} onClick={handleClose}>
+            <div className={styles.expandedCard} onClick={e => e.stopPropagation()}>
+              <div className={styles.closeButtonWrapper}>
+                <button className={styles.closeButton} onClick={handleClose}>
+                  <Image
+                    src="/close.svg"
+                    alt="Close"
+                    width={16}
+                    height={16}
+                    className={styles.crossIcon}
+                  />
+                </button>
+              </div>
+              <div className={styles.cardContent}>
+                <div className={styles.cardImage}>
+                  <Image
+                    src="/god.jpg"
+                    alt={selectedMember.name}
+                    fill
+                    sizes="(max-width: 992px) 150px,
+                          200px"
+                    quality={90}
+                    priority
+                    className={styles.memberImage}
+                  />
+                </div>
+                <div className={styles.cardDetails}>
+                  <h2>{selectedMember.name}</h2>
+                  <p className={styles.role}>{selectedMember.role}</p>
+                  <p className={styles.contact}>{selectedMember.phone}</p>
+                  <div className={styles.socialLinks}>
+                    <Link href={selectedMember.socialLinks?.linkedin || "https://linkedin.com"} target="_blank" className={styles.socialLink}>
+                      <FaLinkedin
+                        size={24}
+                        color='red'
+                      />
+                    </Link>
+                    <Link href={selectedMember.socialLinks?.instagram || "https://instagram.com"} target="_blank" className={styles.socialLink}>
+                      <FaInstagram
+                        color='red'
+                        size={24}
+                      />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
-      
-      <div className={`${styles.teamLayout} ${selectedMember ? styles.expanded : ''}`}>
+      <div className={`${styles.teamLayout} overflow-hidden w-full no-scrollbar`}>
         {/* First Row - 2 members */}
         <div className={styles.row}>
           {teamMembers.slice(0, 2).map(member => (
-            <div 
-              key={member.id} 
+            <div
+              key={member.id}
               className={`${styles.memberCircle} ${selectedMember?.id === member.id ? styles.selected : ''}`}
               onClick={() => handleMemberClick(member)}
               role="button"
@@ -113,8 +170,8 @@ const TeamPage = () => {
         {/* Second Row - 3 members */}
         <div className={styles.row}>
           {teamMembers.slice(2, 5).map(member => (
-            <div 
-              key={member.id} 
+            <div
+              key={member.id}
               className={`${styles.memberCircle} ${selectedMember?.id === member.id ? styles.selected : ''}`}
               onClick={() => handleMemberClick(member)}
               role="button"
@@ -148,8 +205,8 @@ const TeamPage = () => {
         {/* Third Row - 2 members */}
         <div className={styles.row}>
           {teamMembers.slice(5, 7).map(member => (
-            <div 
-              key={member.id} 
+            <div
+              key={member.id}
               className={`${styles.memberCircle} ${selectedMember?.id === member.id ? styles.selected : ''}`}
               onClick={() => handleMemberClick(member)}
               role="button"
@@ -178,66 +235,10 @@ const TeamPage = () => {
               </div>
             </div>
           ))}
+
         </div>
       </div>
-
-      {selectedMember && (
-        <div className={styles.cardOverlay} onClick={handleClose}>
-          <div className={styles.expandedCard} onClick={e => e.stopPropagation()}>
-            <div className={styles.closeButtonWrapper}>
-              <button className={styles.closeButton} onClick={handleClose}>
-                <Image 
-                  src="/close.svg" 
-                  alt="Close" 
-                  width={16} 
-                  height={16} 
-                  className={styles.crossIcon}
-                />
-              </button>
-            </div>
-            <div className={styles.cardContent}>
-              <div className={styles.cardImage}>
-                <Image
-                  src="/god.jpg"
-                  alt={selectedMember.name}
-                  fill
-                  sizes="(max-width: 992px) 150px,
-                          200px"
-                  quality={90}
-                  priority
-                  className={styles.memberImage}
-                />
-              </div>
-              <div className={styles.cardDetails}>
-                <h2>{selectedMember.name}</h2>
-                <p className={styles.role}>{selectedMember.role}</p>
-                <p className={styles.contact}>{selectedMember.phone}</p>
-                <div className={styles.socialLinks}>
-                  <Link href={selectedMember.socialLinks?.linkedin || "https://linkedin.com"} target="_blank" className={styles.socialLink}>
-                    <Image 
-                      src="linkedin.svg"
-                      alt="LinkedIn" 
-                      width={24} 
-                      height={24} 
-                      className={styles.socialIcon}
-                    />
-                  </Link>
-                  <Link href={selectedMember.socialLinks?.instagram || "https://instagram.com"} target="_blank" className={styles.socialLink}>
-                    <Image 
-                      src="/iconmonstr-instagram-11-240.png"
-                      alt="Instagram" 
-                      width={24} 
-                      height={24} 
-                      className={styles.socialIcon}
-                    />
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+    </>
   )
 }
 

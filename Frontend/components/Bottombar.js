@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import { Instagram, Linkedin } from 'lucide-react'
+import { FaInstagram as Instagram, FaLinkedin as Linkedin } from "react-icons/fa"
 
 function Bottombar({className}) {
     const routes = [
@@ -19,7 +19,7 @@ function Bottombar({className}) {
         },
         {
             name: 'Our Team',
-            link: '/comingsoon'
+            link: '/team'
         }
     ]
   return (

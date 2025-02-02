@@ -2,13 +2,14 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { Menu, Instagram, Linkedin, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { FaLinkedin as Linkedin, FaInstagram as Instagram } from "react-icons/fa"
 
 function Navbar() {
   const [menu, setMenu] = useState(null);
 
   return (
-    <div className='relative z-[6] md:z-auto'>
+    <div className='relative z-[5] md:z-auto'>
       <div className='justify-between gap-12 fixed w-full px-5 hidden md:flex z-20'>
         <div className='absolute -top-[19.1rem] left-5 duration-500 hover:top-20 hover:left-28 scale-90 hover:scale-175 hover:scale-x-200'>
           <button className={cn(
@@ -81,7 +82,7 @@ function Navbar() {
                   </li>
                 </Link>
 
-                <Link href={'/comingsoon'} onClick={() => setMenu(false)}>
+                <Link href={'/team'} onClick={() => setMenu(false)}>
                   <li>
                     Our Team
                   </li>

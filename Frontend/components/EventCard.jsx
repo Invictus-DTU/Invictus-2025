@@ -1,8 +1,5 @@
 "use client"
-import React, { useState } from 'react'
-import Link from 'next/link'
-// import { CgClose } from 'react-icons/cg'
-import { X } from 'lucide-react'
+import React from 'react'
 
 const EventCard = ({ data, onClick }) => {
 

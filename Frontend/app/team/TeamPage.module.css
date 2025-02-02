@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   border-color: #000000;
-  border-width: 2px;
+  /* border-width: 2px; */
 }
 
 /* Title styling */
@@ -42,9 +42,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.2rem;
-  transform: translateX(-22%);
-  margin-top: -5rem;
+  z-index: 2;
+  
+  /* gap: 0.2rem; */
+  /* transform: translateX(-22%); */
+  /* margin-top: -5rem; */
 }
 
 /* Layout state when a card is expanded */
@@ -201,9 +203,12 @@
 
 /* Expanded member card */
 .expandedCard {
-  position: relative;
+  position: fixed;
   width: 800px;
   height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: url('/bg.png') center/cover no-repeat;
   background-color: #f5f5dc;
   border: 1px solid rgba(255, 0, 0, 0.2);
@@ -348,11 +353,11 @@
 @keyframes cardEnter {
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translate(-50%, -50%) translateX(-50px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate(-50%, -50%) translateX(0);
   }
 }
 
@@ -383,10 +388,6 @@
 
 @media (max-width: 992px) {
   .title { font-size: 4.5rem; }
-  .teamLayout {
-    transform: translateX(-3%);
-    margin-top: -3rem;
-  }
   .memberCircle {
     width: 120px;
     height: 120px;
@@ -400,11 +401,6 @@
     height: auto;
     min-height: 400px;
     margin: 0 auto;
-  }
-  .cardContent {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
   }
   .cardImage {
     width: 200px;
@@ -420,7 +416,7 @@
   }
   .teamLayout {
     transform: translateX(0);
-    margin-top: -2rem;
+    margin-top: 2rem;
   }
   .memberCircle {
     width: 110px;
@@ -441,6 +437,19 @@
   }
   .row { gap: 4rem; }
   .row:nth-child(2) { gap: 5.5rem; }
+  .expandedCard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    height: 80vh;
+  }
+  .cardContent {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
   .cardDetails h2 { font-size: 2rem; }
   .role { font-size: 1.2rem; }
   .contact { font-size: 1rem; }
@@ -459,4 +468,12 @@
   }
   .memberDetails h3 { font-size: 0.6rem; }
   .memberDetails p { font-size: 0.5rem; }
+  .row {
+    flex-direction: row;
+    gap: 0.5rem;
+    margin: 2rem 0px;
+  }
+  .row:nth-child(2) {
+    gap: 0.5rem;
+  }
 } 
