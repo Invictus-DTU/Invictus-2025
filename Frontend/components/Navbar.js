@@ -69,6 +69,12 @@ function Navbar() {
                   </li>
                 </Link>
 
+                <Link href={'/sponsors'} onClick={() => setMenu(false)}>
+                  <li>
+                    Sponsors
+                  </li>
+                </Link>
+
                 <Link href={'/events'} onClick={() => setMenu(false)}>
                   <li>
                     Events

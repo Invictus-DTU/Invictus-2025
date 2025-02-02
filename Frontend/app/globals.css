@@ -144,3 +144,18 @@ img {
 .card-bg{
   background: url('/event-card-bg.png') center/cover no-repeat;
 }
+
+
+.move{
+  animation: move 30s infinite linear;
+  will-change: transform;
+}
+
+@keyframes move {
+  0%, 100% {
+    transform: translateX(2%);
+  }
+  50%{
+    transform: translateX(-61%);
+  }
+}

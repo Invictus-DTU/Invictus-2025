@@ -10,6 +10,10 @@ function Bottombar({className}) {
             link: '/'
         },
         {
+            name: 'Sponsors',
+            link: '/comingsoon'
+        },
+        {
             name: 'Events',
             link: '/events'
         },

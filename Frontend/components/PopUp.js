@@ -72,7 +72,7 @@ function PopUp({data, show, setShowPopUp}) {
                     {focused === 'About' &&
                     <>
                         <p className='text-base font-jmh'>
-                            {data.event_desc.toLowerCase()}
+                            {data.about.toLowerCase()}
                         </p>
                     </>
                     }

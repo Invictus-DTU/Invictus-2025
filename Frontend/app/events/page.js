@@ -19,7 +19,7 @@ function page() {
   const [date, setDate] = useState("date");
   
   const [showPopUp, setShowPopUp] = useState(false);
-  const [popUpData, setPopUpData] = useState({unstop_link: "#", prizes: {'Winner': 'Prize'}, event_desc: ''});
+  const [popUpData, setPopUpData] = useState({unstop_link: "#", prizes: {'Winner': 'Prize'}, event_desc: '', about: ""});
 
 
   const handleMouseDown = (e) => {
