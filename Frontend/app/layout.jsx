@@ -1,7 +1,7 @@
 import "./globals.css";
 import Head from "next/head";
 import { AppProvider } from "@/context/AppContext";
-import Main from "@/components/Main";
+import Main from "@/components/Main.jsx";
 
 export const metadata = {
   title: "INVICTUS'25",
