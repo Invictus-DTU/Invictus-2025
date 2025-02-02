@@ -8,7 +8,7 @@ function Terrain() {
   const path = usePathname()
 
   return (
-    <div className={"fixed bottom-0 left-0 w-full -z-0 flex flex-col -space-y-9 items-center"}>
+    <div className={"fixed bottom-0 left-0 w-full -z-10 md:-z-0 flex flex-col -space-y-9 items-center"}>
 
       {/* <div className={cn(
         "rounded-full w-[35%] aspect-square bg-[#CB0305] absolute -bottom-16 -right-3 -z-10 duration-700",

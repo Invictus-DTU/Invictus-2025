@@ -19,7 +19,7 @@ function Bottombar({className}) {
         },
         {
             name: 'Our Team',
-            link: '/comingsoon'
+            link: '/team'
         }
     ]
   return (

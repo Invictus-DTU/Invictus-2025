@@ -8,7 +8,7 @@ function Navbar() {
   const [menu, setMenu] = useState(null);
 
   return (
-    <div className='relative z-[6] md:z-auto'>
+    <div className='relative z-[11] md:z-auto'>
       <div className='justify-between gap-12 fixed w-full px-5 hidden md:flex z-20'>
         <div className='absolute -top-[19.1rem] left-5 duration-500 hover:top-20 hover:left-28 scale-90 hover:scale-175 hover:scale-x-200'>
           <button className={cn(
@@ -43,9 +43,9 @@ function Navbar() {
 
       <div className='flex justify-end p-3 items-center md:hidden'>
           {menu ? 
-          <X size={40} className='z-50' onClick={() => setMenu(false)} />
+          <X size={40} className='z-10' onClick={() => setMenu(false)} />
           :
-          <Menu size={40} className='z-50' onClick={() => setMenu(true)} />
+          <Menu size={40} className='z-10' onClick={() => setMenu(true)} />
           }
 
           <div className={cn(
@@ -54,7 +54,7 @@ function Navbar() {
             )} />
 
           <div className={cn(
-            'fixed top-0 left-0 w-full h-full flex items-center justify-center z-40 translate-y-[-100%]',
+            'fixed top-0 left-0 w-full h-full flex items-center justify-center z-0 translate-y-[-100%]',
             menu && 'from-top translate-y-0',
             menu == false && 'from-bottom'
             )}>

@@ -10,7 +10,7 @@ function PopUp({data, show, setShowPopUp}) {
 
   return (
     <div className={cn(
-        'fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 z-[20] justify-center items-center visible-delay-short',
+        'fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 z-[100000000000] justify-center items-center visible-delay-short',
         show ? 'flex' : 'hidden'
         )}>
         <div className='card-bg p-5 rounded-md flex items-center justify-between gap-8 relative w-[90%] lg:w-3/4 h-[90vh] md:h-[60vh] flex-col md:flex-row z-50'>

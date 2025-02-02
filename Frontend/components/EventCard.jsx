@@ -9,7 +9,7 @@ const EventCard = ({ data, onClick }) => {
   return (
     <>
 
-      <div className='my-3 flex flex-col items-center justify-center min-w-[90%] w-[90%] sm:min-w-[50%] sm:w-[50%] md:min-w-[40%] md:w-[40%] lg:min-w-[28%] lg:w-[28%] xl:min-w-[23%] xl:w-[23%] max-h-[60vh] box-border pb-3 hover:scale-[1.02] hover:traslate-y-[10px] duration-[0.5s] rounded-md pt-2 mr-10 relative drop-shadow-[4px_6px_4px_rgba(0,0,0,0.3)] animate-event-card overflow-auto card-bg'>
+      <div className='my-3 flex flex-col items-center justify-center min-w-[90%] w-[90%] sm:min-w-[50%] sm:w-[50%] md:min-w-[40%] md:w-[40%] lg:min-w-[28%] lg:w-[28%] xl:min-w-[23%] xl:w-[23%] max-h-[60vh] box-border pb-3 hover:scale-[1.02] hover:traslate-y-[10px] duration-[0.5s] rounded-md pt-2 mr-10 relative drop-shadow-[4px_6px_4px_rgba(0,0,0,0.3)] animate-event-card overflow-auto card-bg z-0'>
           <img src={data.logo_link} className='w-[30%] rounded-md' />
           {/* <img src="https://drive.google.com/thumbnail?id=1bGMnFJrM9lfMkovJMld-k66MGQ3gLOzg" className='w-[40%] rounded-md' /> */}
           {/* <img src="/event-demo-logo.png" className='w-[70%]' /> */}

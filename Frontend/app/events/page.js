@@ -125,8 +125,8 @@ function page() {
 
   return (
     <>
-      <div className="visible-delay flex flex-col items-center sm:items-start justify-start text-black px-4 sm:px-4 md:px-6 lg:px-16 -mt-5 md:mt-28 lg:mt-24 overflow-auto z-[5]">
-        <div className="flex flex-col md:flex-row items-center justify-between w-full">
+      <div className="visible-delay flex flex-col items-center sm:items-start justify-start text-black px-4 sm:px-4 md:px-6 lg:px-16 -mt-5 md:mt-28 lg:mt-24 overflow-auto z-10">
+        <div className="flex flex-col md:flex-row items-center justify-between w-full -z-10">
           <h1
             className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl"
           >
