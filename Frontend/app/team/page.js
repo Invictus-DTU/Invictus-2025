@@ -14,7 +14,7 @@ function page() {
           id: 1,
           name: "Khobaib Akmal",
           role: "Gen. Secretary",
-          phone: "+91 8869816786",
+          phone: "khobaibakmal@ieee.org",
           img: "/council/khobaib.jpg",
           socialLinks: {
             linkedin: "#",
@@ -25,7 +25,7 @@ function page() {
           id: 2,
           name: "shivang Dwivedi",
           role: "Treasurer",
-          phone: "+91 6392199393",
+          phone: "",
           img: "/council/shivang.jpg",
           socialLinks: {
             linkedin: "https://www.linkedin.com/in/shivang-dwivedii",
@@ -36,7 +36,7 @@ function page() {
           id: 3,
           name: "Ishan Chugh",
           role: "Jt. Secretary",
-          phone: "+91 9267952938",
+          phone: "chughishan127@gmail.com",
           img: "/council/ishan.jpg",
           socialLinks: {
             linkedin: "https://www.linkedin.com/in/ishanchugh01",
@@ -47,7 +47,7 @@ function page() {
           id: 4,
           name: "Vaishnavi Saraswat",
           role: "Jt. Secretary",
-          phone: "+91 9650461478",
+          phone: "",
           img: "/council/vaishnavi.jpg",
           socialLinks: {
             linkedin: "https://www.linkedin.com/in/vaishnavi-saraswat-44967424b",
@@ -58,7 +58,7 @@ function page() {
           id: 5,
           name: "Tasneem Ahmed",
           role: "Jt. Secretary",
-          phone: "+91 8376031863",
+          phone: "tasneem28ahmed@ieee.org",
           img: "/council/tasneem.jpg",
           socialLinks:{
             linkedin: "https://www.linkedin.com/in/tasneem-a-2b87b61a5",
@@ -69,7 +69,7 @@ function page() {
           id: 6,
           name: "Sameeksha",
           role: "Jt. Treasurer",
-          phone: "+91 7206567950",
+          phone: "",
           img: "/council/sameeksha.jpg",
             socialLinks: {
                 linkedin: "https://www.linkedin.com/in/sam13299",
@@ -80,7 +80,7 @@ function page() {
           id: 7,
           name: "Yatharth Bisht",
           role: "Jt. Treasurer",
-          phone: "+91 8882359577",
+          phone: "",
           img: "/council/yatharth.jpg",
           socialLinks: {
             linkedin: "https://www.linkedin.com/in/yatharth-bisht-8a559b241",

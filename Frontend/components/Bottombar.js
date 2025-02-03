@@ -11,7 +11,7 @@ function Bottombar({className}) {
         },
         {
             name: 'Sponsors',
-            link: '/comingsoon'
+            link: '/sponsors'
         },
         {
             name: 'Events',
@@ -57,7 +57,7 @@ function Bottombar({className}) {
                 <Linkedin size={24} />
             </Link>
 
-            <Link href={'https://discord.gg/X48VW5NQ'} target='_blank'>
+            <Link href={'https://discord.gg/KQkSADKvrW'} target='_blank'>
                 <img src='/discord.png' alt='discord' className='w-7' />
             </Link>
             

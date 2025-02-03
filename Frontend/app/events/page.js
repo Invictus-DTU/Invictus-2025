@@ -193,7 +193,9 @@ function page() {
             onMouseLeave={handleMouseUp}
           >
             {events.map((event, index) => (
+              <>
                 <EventCard key={index} data={event} onClick={handleOnClick} />
+              </>
             ))}
           </div>
 

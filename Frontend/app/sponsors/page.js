@@ -1,6 +1,15 @@
-import React from 'react'
+"use client"
+import React, {useEffect} from 'react'
 
 function page() {
+    useEffect(() => {
+              var item = document.getElementById("scroll");
+          
+              window.addEventListener("wheel", function (e) {
+                if (e.deltaY > 0) item.scrollLeft += 100;
+                else item.scrollLeft -= 100;
+              });
+            }, []);
   return (
     <div className='flex flex-col items-center justify-center w-full gap-5 -mt-[3%] md:mt-0 md:pt-[3%] visible-delay'>
         <h1 className='text-3xl md:text-4xl'>
@@ -54,7 +63,7 @@ function page() {
                 <h2 className='text-md md:text-xl w-full text-center'>
                     Other Sponsors
                 </h2>
-                <div className='flex gap-2 md:gap-5 items-center move'>
+                <div id='scroll' className='flex gap-2 md:gap-5 items-center overflow-scroll no-scrollbar'>
                     <img src='/sponsors/TVS.png' alt='TVS motors' className='w-16 md:w-28 aspect-auto' />
                     <img src='/sponsors/HT.png' alt='Hindustan Times' className='w-16 md:w-28 aspect-auto' />
                     <img src='/sponsors/Fresca.jpg' alt='Fresca' className='w-16 md:w-28 aspect-auto' />
