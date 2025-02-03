@@ -42,7 +42,7 @@ function page() {
                     Bronze Sponsors
                 </h2>
                 <div className='flex justify-center gap-5 items-center flex-wrap'>
-                    <img src='/sponsors/Triumph.png' alt='Triumph' className='w-20 md:w-32 aspect-auto' />
+                    <img src='/sponsors/triumph.png' alt='Triumph' className='w-20 md:w-32 aspect-auto' />
                     <img src='/sponsors/Jawa.png' alt='Jawa Moto' className='w-20 md:w-32 aspect-auto' />
                     <img src='/sponsors/Suzuki.png' alt='Suzuki' className='w-20 md:w-32 aspect-auto' />
                 </div>
@@ -66,7 +66,7 @@ function page() {
                 <div id='scroll' className='flex gap-2 md:gap-5 items-center overflow-scroll no-scrollbar'>
                     <img src='/sponsors/TVS.png' alt='TVS motors' className='w-16 md:w-28 aspect-auto' />
                     <img src='/sponsors/HT.png' alt='Hindustan Times' className='w-16 md:w-28 aspect-auto' />
-                    <img src='./sponsors/Fresca.jpg' alt='Fresca' className='w-16 md:w-28 aspect-auto' />
+                    <img src='/sponsors/fresca.jpg' alt='Fresca' className='w-16 md:w-28 aspect-auto' />
                     <img src='/sponsors/hdfc.png' alt='HDFC' className='w-16 md:w-28 aspect-auto' />
                     <img src='/sponsors/farmley.jpg' alt='Farmley' className='w-16 md:w-28 aspect-auto' />
                     <img src='/sponsors/carstreet.png' alt='Carstreet' className='w-16 md:w-28 aspect-auto' />
