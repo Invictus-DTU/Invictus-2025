@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const events = require('./routes/events');
 const { connectDB } = require('./utils/db');
+const auth = require('./routes/auth');
 
 dotenv.config()
 
@@ -13,9 +14,14 @@ const PORT = process.env.PORT || 8000;
 app.use(cors({
     origin: ['https://www.invictusdtu.in', 'https://invictusdtu.in', 'http://localhost:3000'], // Allow specific origins
     methods: ['GET', 'POST'], // Allow only specific HTTP methods
-    allowedHeaders: ['Content-Type', 'Authorization'] // Allow specific headers
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
+    credentials: true
   }));
 
+app.use(express.json())
+// app.use(express.urlencoded({ extended: false }))
+
+app.use("/api/auth", auth)
 app.use("/api/events", events)
 
 app.get('/', (req, res) => {

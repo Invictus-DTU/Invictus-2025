@@ -3,6 +3,7 @@ import EventCard from "@/components/EventCard";
 import React, { useRef, useState, useEffect } from "react";
 import { Search, CircleChevronRight } from "lucide-react";
 import PopUp from "@/components/PopUp";
+import {BASE_URL} from "@/lib/BASE_URL";
 
 function page() {
   const scrollRef = useRef(null);
@@ -42,7 +43,7 @@ function page() {
   };
 
   const fetchAllData = async () => {
-    const response = await fetch("https://invictus-2025-16ei.vercel.app/api/events", {
+    const response = await fetch(BASE_URL+"/api/events", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
