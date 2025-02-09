@@ -25,20 +25,18 @@ function Navbar() {
           </button>
         </div>
 
-        {/* <div>
-          <button className={cn(
-            'relative -top-[78%] left-0 scale-90 duration-500 hover:scale-175 hover:scale-x-200 hover:top-20 hover:-left-20')}>
-            <img src='/fullscroll1.svg' className='z-0 scale-90'/>
-
-            <p className='absolute top-[7rem] left-14 w-[6.35rem] right-0 z-10 text-black text-[9px] font-jmh'>
-              Something
-            </p>
-            
-            <p className='absolute bottom-[38px] left-10 right-0 z-10 text-black font-medium text-lg'>
-              Menu
-            </p>
-          </button>
-        </div> */}
+        <div className='absolute -top-[19.1rem] right-5 duration-200 hover:-top-[18.7rem] scale-90'>
+          <Link href={'/login'}>
+            <button className={cn(
+              'relative ')}>
+              <img src='/fullscroll1.svg' className='z-0 scale-90'/>
+              
+              <p className='absolute bottom-[38px] left-10 right-0 z-10 text-black font-medium text-lg'>
+                Login
+              </p>
+            </button>
+          </Link>
+        </div>
       </div>
 
       <div className='flex justify-end p-3 items-center md:hidden'>
@@ -66,6 +64,12 @@ function Navbar() {
                 <Link href={'/'} onClick={() => setMenu(false)}>
                   <li>
                     Home
+                  </li>
+                </Link>
+
+                <Link href={'/login'} onClick={() => setMenu(false)}>
+                  <li>
+                    Login
                   </li>
                 </Link>
 
