@@ -186,7 +186,7 @@ function page() {
         <div className="mt-4 flex flex-row items-center justify-start w-full overflow-auto">
           <div
             ref={scrollRef}
-            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing"
+            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing w-full"
             id="scroll"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}

@@ -1,5 +1,5 @@
 "use client";
-import EventCard from "@/components/EventCard";
+import WorkshopCard from "@/components/WorkshopCard";
 import React, { useRef, useState, useEffect } from "react";
 import { Search, CircleChevronRight } from "lucide-react";
 import PopUp from "@/components/PopUp";
@@ -14,6 +14,37 @@ function page() {
   
   const [showPopUp, setShowPopUp] = useState(false);
   const [popUpData, setPopUpData] = useState({unstop_link: "#", prizes: {'Winner': 'Prize'}, event_desc: '', about: ""});
+
+  const workshops = [
+    {
+      name: 'Future of AI driven by on device Intelligence',
+      company: 'Qualcomm',
+      date: '16th Feb',
+      timing: '2:30 - 4:30 PM',
+      image: '/sponsors/qualcomm.png'
+    },
+    {
+      name: 'AI Workshop',
+      company: 'Adobe',
+      date: '17th Feb',
+      timing: '1:00 - 2:00 PM',
+      image: '/sponsors/Adobe_icon.png'
+    },
+    {
+      name: 'Fireside Chat',
+      company: 'Amdocs',
+      date: '17th Feb',
+      timing: '3:00 - 4:00 PM',
+      image: '/sponsors/amdocs.png'
+    },
+    {
+      name: 'Study Abroad Roadmap',
+      company: 'Fateh',
+      date: '18th Feb',
+      timing: '2:00 - 3:00 PM',
+      image: '/sponsors/fateh.png'
+    }
+  ]
 
 
   const handleMouseDown = (e) => {
@@ -86,15 +117,15 @@ function page() {
         <div className="mt-4 flex flex-row items-center justify-start w-full overflow-auto">
           <div
             ref={scrollRef}
-            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing"
+            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing w-full"
             id="scroll"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
           >
-            {events.map((event, index) => (
-                <EventCard key={index} data={event} onClick={handleOnClick} />
+            {workshops.map((event, index) => (
+                <WorkshopCard key={index} data={event} onClick={handleOnClick} />
             ))}
           </div>
 
