@@ -4,6 +4,8 @@ const cors = require('cors');
 const events = require('./routes/events');
 const { connectDB } = require('./utils/db');
 const auth = require('./routes/auth');
+const workshop = require('./routes/workshop');
+const user = require('./routes/user');
 
 dotenv.config()
 
@@ -21,8 +23,10 @@ app.use(cors({
 app.use(express.json())
 // app.use(express.urlencoded({ extended: false }))
 
+app.use("/api/user", user)
 app.use("/api/auth", auth)
 app.use("/api/events", events)
+app.use("/api/workshop", workshop)
 
 app.get('/', (req, res) => {
     res.send("Hello World")
