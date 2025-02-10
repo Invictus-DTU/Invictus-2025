@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const cookieParser = require("cookie-parser")
 const events = require('./routes/events');
 const { connectDB } = require('./utils/db');
 const auth = require('./routes/auth');
@@ -21,6 +22,7 @@ app.use(cors({
   }));
 
 app.use(express.json())
+app.use(cookieParser())
 // app.use(express.urlencoded({ extended: false }))
 
 app.use("/api/user", user)

@@ -1,8 +1,9 @@
 "use client"
 import { BASEURL } from '@/lib/BASE_URL'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useStore } from '@/context/AppContext'
 
 const page = () => {
 
@@ -13,6 +14,13 @@ const page = () => {
     })
 
     const [error, setError] = useState("")
+    const { fetchUser, user } = useStore()
+
+    useEffect(() => {
+        if (user != null) {
+            router.push("/")
+        }
+    }, [user])
 
 
     const submitForm = async (e) => {
@@ -31,7 +39,7 @@ const page = () => {
             if (success) {
                 console.log(token)
                 console.log("logged in yo")
-                console.log(message)
+                fetchUser()
                 router.push("/")
             }
             else {
