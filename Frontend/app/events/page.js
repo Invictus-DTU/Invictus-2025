@@ -97,6 +97,8 @@ function page() {
   }, [mode, category, date]);
 
   useEffect(() => {
+    var item = document.getElementById("scroll");
+
     const handleWheel = (e) => {
       if (e.deltaY > 0) item.scrollLeft += 100;
       else item.scrollLeft -= 100;
@@ -108,7 +110,6 @@ function page() {
     }
 
     const handleLeftScroll = () => {
-      var item = document.getElementById("scroll");
       item.scrollLeft -= 100
     }
     var rightBtn = document.getElementById("right");

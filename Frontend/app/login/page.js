@@ -39,6 +39,7 @@ const page = () => {
             if (success) {
                 console.log(token)
                 console.log("logged in yo")
+                localStorage.setItem("token", token)
                 fetchUser()
                 router.push("/")
             }

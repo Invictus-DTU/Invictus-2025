@@ -19,6 +19,7 @@ export const AppProvider = ({ children }) => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": localStorage.getItem("token")
             },
             credentials: 'include'
         });
@@ -35,7 +36,7 @@ export const AppProvider = ({ children }) => {
         const r1 = await fetch(BASEURL + "/api/events", {
             method: "GET",
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json"
             },
         });
 
@@ -47,6 +48,7 @@ export const AppProvider = ({ children }) => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": localStorage.getItem("token")
             },
             credentials: 'include'
         });

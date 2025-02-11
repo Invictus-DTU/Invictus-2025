@@ -68,6 +68,8 @@ function page() {
   
   
   useEffect(() => {
+    var item = document.getElementById("scroll");
+
     const handleWheel = (e) => {
       if (e.deltaY > 0) item.scrollLeft += 100;
       else item.scrollLeft -= 100;
@@ -79,7 +81,6 @@ function page() {
     }
   
     const handleLeftScroll = () => {
-      var item = document.getElementById("scroll");
       item.scrollLeft -= 100
     }
     var rightBtn = document.getElementById("right");
@@ -112,7 +113,7 @@ function page() {
         <div className="mt-4 flex flex-row items-center justify-start w-full overflow-auto">
           <div
             ref={scrollRef}
-            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing w-full scroll-smooth"
+            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing w-full"
             id="scroll"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}

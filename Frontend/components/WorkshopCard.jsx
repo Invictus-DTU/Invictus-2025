@@ -26,7 +26,10 @@ const WorkshopCard = ({ data }) => {
     try {
       const res = await fetch(BASEURL + `/api/workshop/register/${id}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": localStorage.getItem("token"),
+        },
         credentials: "include",
       });
 

@@ -36,12 +36,13 @@ const page = () => {
         else {
             setError("")
             const res = await fetch(BASEURL + "/api/auth/register", { headers: { "Content-Type": "application/json" }, credentials: "include", method: "POST", body: JSON.stringify(formData) })
-            const { success, message } = await res.json()
+            const { success, message, token } = await res.json()
 
 
             if (success) {
                 console.log("logged in yo")
                 console.log(message)
+                localStorage.setItem("token", token)
                 fetchUser()
                 router.push("/")
             }

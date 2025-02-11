@@ -4,7 +4,8 @@ const User = require("../models/User");
 const ensureAuthenticated = async (req, res, next) => {
   try {
     
-    const token = req.cookies.auth_token;
+    const token = req.headers.authorization;
+    console.log(token)
 
     if (!token) {
       res.status(401).json({ success: false, message: "Access denied. No token provided." });
@@ -13,6 +14,7 @@ const ensureAuthenticated = async (req, res, next) => {
 
     
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(decoded)
 
     const user = await User.findById(decoded.id).select("-password");
 
