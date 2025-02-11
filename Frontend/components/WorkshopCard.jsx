@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-// import { CgClose } from 'react-icons/cg'
 import { X } from "lucide-react";
 import { useStore } from "@/context/AppContext";
 import { toast } from "react-toastify";
