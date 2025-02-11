@@ -2,7 +2,6 @@
 import WorkshopCard from "@/components/WorkshopCard";
 import React, { useRef, useState, useEffect } from "react";
 import { Search, CircleChevronRight } from "lucide-react";
-import PopUp from "@/components/PopUp";
 
 function page() {
   const scrollRef = useRef(null);
@@ -10,20 +9,17 @@ function page() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  const [events, setEvents] = useState([]);
-  
-  const [showPopUp, setShowPopUp] = useState(false);
-  const [popUpData, setPopUpData] = useState({unstop_link: "#", prizes: {'Winner': 'Prize'}, event_desc: '', about: ""});
-
   const workshops = [
     {
+      id: 1,
       name: 'Future of AI driven by on device Intelligence',
       company: 'Qualcomm',
       date: '16th Feb',
       timing: '2:30 - 4:30 PM',
-      image: '/sponsors/qualcomm.png'
+      image: '/sponsors/Qualcomm.png'
     },
     {
+      id: 2,
       name: 'AI Workshop',
       company: 'Adobe',
       date: '17th Feb',
@@ -31,6 +27,7 @@ function page() {
       image: '/sponsors/Adobe_icon.png'
     },
     {
+      id: 3,
       name: 'Fireside Chat',
       company: 'Amdocs',
       date: '17th Feb',
@@ -38,6 +35,7 @@ function page() {
       image: '/sponsors/amdocs.png'
     },
     {
+      id: 4,
       name: 'Study Abroad Roadmap',
       company: 'Fateh',
       date: '18th Feb',
@@ -66,42 +64,39 @@ function page() {
     setIsDragging(false);
   };
 
-  const fetchAllData = async () => {
-    const response = await fetch("https://invictus-2025-16ei.vercel.app/api/events", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await response.json();
-    setEvents(data.events);
-  };
-
+  
+  
+  
   useEffect(() => {
-    fetchAllData();
-    var item = document.getElementById("scroll");
+    const handleWheel = (e) => {
+      if (e.deltaY > 0) item.scrollLeft += 100;
+      else item.scrollLeft -= 100;
+    }
+  
+    const handleRightScroll = () => {
+      var item = document.getElementById("scroll");
+      item.scrollLeft += 100
+    }
+  
+    const handleLeftScroll = () => {
+      var item = document.getElementById("scroll");
+      item.scrollLeft -= 100
+    }
     var rightBtn = document.getElementById("right");
     var leftBtn = document.getElementById("left");
 
-    window.addEventListener("wheel", function (e) {
-      if (e.deltaY > 0) item.scrollLeft += 100;
-      else item.scrollLeft -= 100;
-    });
+    window.addEventListener("wheel", handleWheel);
 
-    rightBtn.addEventListener("click", function () {
-      item.scrollLeft += 100;
-    });
+    rightBtn.addEventListener("click", handleRightScroll);
 
-    leftBtn.addEventListener("click", function () {
-      item.scrollLeft -= 100;
-    });
+    leftBtn.addEventListener("click", handleLeftScroll);
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel)
+      rightBtn.removeEventListener("click", handleRightScroll)
+      leftBtn.removeEventListener("click", handleLeftScroll)
+    }
   }, []);
-
-  const handleOnClick = (data) => {
-    setPopUpData(data);
-    setShowPopUp(true);
-  }
 
   return (
     <>
@@ -117,7 +112,7 @@ function page() {
         <div className="mt-4 flex flex-row items-center justify-start w-full overflow-auto">
           <div
             ref={scrollRef}
-            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing w-full"
+            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing w-full scroll-smooth"
             id="scroll"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
@@ -125,12 +120,11 @@ function page() {
             onMouseLeave={handleMouseUp}
           >
             {workshops.map((event, index) => (
-                <WorkshopCard key={index} data={event} onClick={handleOnClick} />
+              <WorkshopCard key={index} data={event}  />
             ))}
           </div>
 
         </div>
-        <PopUp data={popUpData} show={showPopUp} setShowPopUp={setShowPopUp} />
 
         <CircleChevronRight id="right" size={40} fill="#2F1414" color="white" className="mt-5 cursor-pointer absolute right-5 top-[45%]" />
         <CircleChevronRight id="left" size={40} fill="#2F1414" color="white" className="mt-5 cursor-pointer absolute left-5 top-[45%] rotate-180" />

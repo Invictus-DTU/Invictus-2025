@@ -3,7 +3,7 @@ import EventCard from "@/components/EventCard";
 import React, { useRef, useState, useEffect } from "react";
 import { Search, CircleChevronRight } from "lucide-react";
 import PopUp from "@/components/PopUp";
-import { BASEURL } from "@/lib/BASE_URL";
+import { useStore } from "@/context/AppContext";
 
 function page() {
   const scrollRef = useRef(null);
@@ -11,16 +11,16 @@ function page() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  const [data, setData] = useState([]);
-  const [events, setEvents] = useState([]);
   const [disabled, setDisabled] = useState(false);
+
+  const { events, setEvents, data } = useStore()
 
   const [mode, setMode] = useState("mode");
   const [category, setCategory] = useState("category");
   const [date, setDate] = useState("date");
-  
+
   const [showPopUp, setShowPopUp] = useState(false);
-  const [popUpData, setPopUpData] = useState({unstop_link: "#", prizes: {'Winner': 'Prize'}, event_desc: '', about: ""});
+  const [popUpData, setPopUpData] = useState({ unstop_link: "#", prizes: { 'Winner': 'Prize' }, event_desc: '', about: "" });
 
 
   const handleMouseDown = (e) => {
@@ -42,21 +42,8 @@ function page() {
     setIsDragging(false);
   };
 
-  const fetchAllData = async () => {
-    const response = await fetch(BASEURL+"/api/events", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const data = await response.json();
-    setData(data.events);
-    setEvents(data.events);
-  };
-
   const fetchFilteredData = async (query) => {
-    if (query === ""){
+    if (query === "") {
       setEvents(data);
       return;
     }
@@ -71,7 +58,7 @@ function page() {
   const filterData = () => {
     console.log(mode, category, date);
 
-    if(mode === "mode" && category === "category" && date === "date"){
+    if (mode === "mode" && category === "category" && date === "date") {
       setEvents(data);
       setDisabled(false);
       return
@@ -80,29 +67,29 @@ function page() {
     setDisabled(true);
 
     setEvents(data.filter((event) => {
-        if(mode !== "mode" && category !== "category" && date !== "date"){
-          return event.mode.toLowerCase() === mode && event.category.toLowerCase() === category && event.date.toLowerCase() === date;
-        }
-        else if(mode !== "mode" && category !== "category"){
-          return event.mode.toLowerCase() === mode && event.category.toLowerCase() === category;
-        }
-        else if(mode !== "mode" && date !== "date"){
-          return event.mode.toLowerCase() === mode && event.date.toLowerCase() === date;
-        }
-        else if(category !== "category" && date !== "date"){
-          return event.category.toLowerCase() === category && event.date.toLowerCase() === date;
-        }
-        else if(mode !== "mode"){
-          return event.mode.toLowerCase() === mode;
-        }
-        else if(category !== "category"){
-          return event.category.toLowerCase() === category;
-        }
-        else if(date !== "date"){
-          return event.date.toLowerCase() === date;
-        }
+      if (mode !== "mode" && category !== "category" && date !== "date") {
+        return event.mode.toLowerCase() === mode && event.category.toLowerCase() === category && event.date.toLowerCase() === date;
+      }
+      else if (mode !== "mode" && category !== "category") {
+        return event.mode.toLowerCase() === mode && event.category.toLowerCase() === category;
+      }
+      else if (mode !== "mode" && date !== "date") {
+        return event.mode.toLowerCase() === mode && event.date.toLowerCase() === date;
+      }
+      else if (category !== "category" && date !== "date") {
+        return event.category.toLowerCase() === category && event.date.toLowerCase() === date;
+      }
+      else if (mode !== "mode") {
+        return event.mode.toLowerCase() === mode;
+      }
+      else if (category !== "category") {
+        return event.category.toLowerCase() === category;
+      }
+      else if (date !== "date") {
+        return event.date.toLowerCase() === date;
+      }
     })
-  );
+    );
   }
 
   useEffect(() => {
@@ -110,23 +97,34 @@ function page() {
   }, [mode, category, date]);
 
   useEffect(() => {
-    fetchAllData();
-    var item = document.getElementById("scroll");
+    const handleWheel = (e) => {
+      if (e.deltaY > 0) item.scrollLeft += 100;
+      else item.scrollLeft -= 100;
+    }
+
+    const handleRightScroll = () => {
+      var item = document.getElementById("scroll");
+      item.scrollLeft += 100
+    }
+
+    const handleLeftScroll = () => {
+      var item = document.getElementById("scroll");
+      item.scrollLeft -= 100
+    }
     var rightBtn = document.getElementById("right");
     var leftBtn = document.getElementById("left");
 
-    window.addEventListener("wheel", function (e) {
-      if (e.deltaY > 0) item.scrollLeft += 100;
-      else item.scrollLeft -= 100;
-    });
+    window.addEventListener("wheel", handleWheel);
 
-    rightBtn.addEventListener("click", function () {
-      item.scrollLeft += 100;
-    });
+    rightBtn.addEventListener("click", handleRightScroll);
 
-    leftBtn.addEventListener("click", function () {
-      item.scrollLeft -= 100;
-    });
+    leftBtn.addEventListener("click", handleLeftScroll);
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel)
+      rightBtn.removeEventListener("click", handleRightScroll)
+      leftBtn.removeEventListener("click", handleLeftScroll)
+    }
   }, []);
 
   const handleOnClick = (data) => {
@@ -186,7 +184,7 @@ function page() {
         <div className="mt-4 flex flex-row items-center justify-start w-full overflow-auto">
           <div
             ref={scrollRef}
-            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing w-full"
+            className="flex md:pl-2 flex-row select-none overflow-x-scroll no-scrollbar cursor-grab active:cursor-grabbing w-full scroll-smooth"
             id="scroll"
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
@@ -194,7 +192,7 @@ function page() {
             onMouseLeave={handleMouseUp}
           >
             {events.map((event, index) => (
-                <EventCard key={index} data={event} onClick={handleOnClick} />
+              <EventCard key={index} data={event} onClick={handleOnClick} />
             ))}
           </div>
 

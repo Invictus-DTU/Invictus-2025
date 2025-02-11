@@ -4,7 +4,7 @@ const ensureAuthenticated = require('../middleware/ensureAuthenticated');
 const user = express.Router()
 
 user.get("/", ensureAuthenticated, async (req, res) => {
-    res.json(req.user)
+    res.json({ success: true, user: req.user })
 })
 
 

@@ -22,13 +22,14 @@ workshop.post("/register/:workshopId", ensureAuthenticated, async (req, res) => 
             req.user._id,
             { $addToSet: { workshop: workshopId } },
             { new: true }
-        );
+        ).select("-password");
+        
         if (!user) {
             res.status(404).json({ success: false, message: "User not found" });
             return
         }
 
-        res.status(200).json({ success: true, message: "Successfully registered for workshop!!" })
+        res.status(200).json({ success: true, message: "Successfully registered for workshop!!", user })
         return
     } catch (error) {
         res.status(500).json({ success: false, message: "An error occurred!" })

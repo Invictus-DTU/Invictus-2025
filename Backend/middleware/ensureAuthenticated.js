@@ -3,21 +3,21 @@ const User = require("../models/User");
 
 const ensureAuthenticated = async (req, res, next) => {
   try {
-    const token = req.header("Authorization");
+    
+    const token = req.cookies.auth_token;
 
     if (!token) {
-      res.status(401).json({ message: "Access denied. No token provided." });
+      res.status(401).json({ success: false, message: "Access denied. No token provided." });
       return
     }
 
-    const tokenValue = token.replace("Bearer ", "");
-
-    const decoded = jwt.verify(tokenValue, process.env.JWT_SECRET);
+    
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await User.findById(decoded.id).select("-password");
 
     if (!user) {
-      res.status(401).json({ message: "User not found. Invalid token." });
+      res.status(401).json({ success: false, message: "User not found. Invalid token." });
       return
     }
 
@@ -25,7 +25,7 @@ const ensureAuthenticated = async (req, res, next) => {
     next(); 
 
   } catch (error) {
-    res.status(401).json({ message: "Invalid or expired token." });
+    res.status(401).json({ success: false, message: "Invalid or expired token." });
     return
   }
 };

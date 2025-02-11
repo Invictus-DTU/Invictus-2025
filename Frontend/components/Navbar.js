@@ -3,9 +3,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Menu, Instagram, Linkedin, X } from 'lucide-react';
+import { useStore } from '@/context/AppContext';
 
 function Navbar() {
   const [menu, setMenu] = useState(null);
+  const { user } = useStore()
 
   return (
     <div className='relative z-[11] md:z-auto'>
@@ -24,19 +26,22 @@ function Navbar() {
             </p>
           </button>
         </div>
-
-        <div className='absolute -top-[19.1rem] right-5 duration-200 hover:-top-[18.7rem] scale-90'>
-          <Link href={'/login'}>
-            <button className={cn(
-              'relative ')}>
-              <img src='/fullscroll1.svg' className='z-0 scale-90'/>
-              
-              <p className='absolute bottom-[38px] left-10 right-0 z-10 text-black font-medium text-lg'>
-                Login
-              </p>
-            </button>
-          </Link>
-        </div>
+        {
+          !user && (
+          <div className='absolute -top-[19.1rem] right-5 duration-200 hover:-top-[18.7rem] scale-90'>
+            <Link href={'/login'}>
+              <button className={cn(
+                'relative ')}>
+                <img src='/fullscroll1.svg' className='z-0 scale-90'/>
+                
+                <p className='absolute bottom-[38px] left-10 right-0 z-10 text-black font-medium text-lg'>
+                  Login
+                </p>
+              </button>
+            </Link>
+          </div>
+          )
+        }
       </div>
 
       <div className='flex justify-end p-3 items-center md:hidden'>
@@ -67,11 +72,15 @@ function Navbar() {
                   </li>
                 </Link>
 
-                <Link href={'/login'} onClick={() => setMenu(false)}>
-                  <li>
-                    Login
-                  </li>
-                </Link>
+                {
+                  !user && (
+                  <Link href={'/login'} onClick={() => setMenu(false)}>
+                    <li>
+                      Login
+                    </li>
+                  </Link>
+                  )
+                }
 
                 <Link href={'/sponsors'} onClick={() => setMenu(false)}>
                   <li>
