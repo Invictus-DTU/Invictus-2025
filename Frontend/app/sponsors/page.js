@@ -288,7 +288,7 @@ function page() {
                 </div>
 
                 <div className='flex flex-col items-center w-32'>
-                    <img src='/sponsors/BankofBarodo.png' alt='Bank of Baroda' className='w-12 md:w-24 aspect-auto' />
+                    <img src='/sponsors/BankOfBarodo.png' alt='Bank of Baroda' className='w-12 md:w-24 aspect-auto' />
                     <p className='w-full text-center text-sm md:text-base'>
                         Banking
                     </p>
