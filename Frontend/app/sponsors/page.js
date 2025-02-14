@@ -278,6 +278,22 @@ function page() {
                     </p>
                 </div>
             </div>
+
+            <div className='card-bg rounded-md md:p-5 flex md:gap-y-3 min-w-[17rem] md:min-w-80 items-end justify-center flex-wrap'>
+                <div className='flex flex-col items-center w-32'>
+                    <img src='/sponsors/xtacy.jpg' alt='XStacy' className='w-12 md:w-20 aspect-auto' />
+                    <p className='w-full text-center text-sm md:text-base'>
+                        Energy Drink
+                    </p>
+                </div>
+
+                <div className='flex flex-col items-center w-32'>
+                    <img src='/sponsors/BankofBarodo.png' alt='Bank of Baroda' className='w-12 md:w-24 aspect-auto' />
+                    <p className='w-full text-center text-sm md:text-base'>
+                        Banking
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
   )
