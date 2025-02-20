@@ -198,7 +198,7 @@ function page() {
                 </div>
 
                 <div className='flex flex-col items-center w-32'>
-                    <img src='/sponsors/aditya birl.png' alt='Aditya Birla Group' className='w-16 md:w-20 aspect-auto' />
+                    <img src='/sponsors/aditya birla.jpg' alt='Aditya Birla Group' className='w-16 md:w-24 aspect-auto' />
                     <p className='w-full text-center text-sm md:text-base'>
                         Hackathon
                     </p>
